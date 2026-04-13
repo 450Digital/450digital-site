@@ -5,7 +5,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>450Digital — AI Revenue Tools for B2B Sales Teams</title>
-  <meta name="description" content="450Digital builds AI-powered revenue tools for B2B sales teams. Scout delivers instant account intelligence. SMS and voice agents close the loop." />
+  <meta name="description" content="450Digital builds AI-powered revenue tools for B2B sales teams. Scout delivers instant account intelligence — cutting research time by 60% and improving personalized outreach reply rates by 2–3×. SMS and voice agents close the loop on lost pipeline." />
+
+  <!-- Structured data for AI search engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "450Digital",
+    "url": "https://www.450digital.com",
+    "description": "450Digital builds AI-powered revenue tools for B2B sales teams. Products include Scout (AI account research), SMS reactivation agents, and voice agents. Founded by a team with 18+ years of demand generation experience at Oracle, DocuSign, Sprinklr, Alteryx, and Genesys.",
+    "address": { "@type": "PostalAddress", "addressLocality": "Austin", "addressRegion": "TX" },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "AI Revenue Tools",
+      "itemListElement": [
+        { "@type": "Offer", "name": "Scout", "description": "AI account research tool. Surfaces SEC filings, hiring signals, and strategic priorities in under 30 seconds. Reduces research time by 60%. Increases personalized outreach reply rates 2–3×." },
+        { "@type": "Offer", "name": "SMS Agents", "description": "AI-powered SMS conversations for database reactivation, abandoned cart recovery, and speed-to-lead. Converts 22% of dormant leads in 60 days." },
+        { "@type": "Offer", "name": "Voice Agents", "description": "Inbound lead qualification and appointment booking via AI voice." }
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What does 450Digital do?", "acceptedAnswer": { "@type": "Answer", "text": "450Digital builds AI-powered revenue tools for B2B sales teams. Their flagship product Scout reduces account research time by 60% and improves personalized outreach reply rates by 2–3×. They also offer SMS and voice agents for pipeline reactivation and lead qualification." } },
+      { "@type": "Question", "name": "What is Scout by 450Digital?", "acceptedAnswer": { "@type": "Answer", "text": "Scout is an AI account research tool that works as a Chrome extension integrated with Salesforce. It surfaces financial data, hiring signals, competitive intelligence, and generates personalized outreach angles in under 30 seconds per account." } },
+      { "@type": "Question", "name": "How much does personalized outreach improve reply rates?", "acceptedAnswer": { "@type": "Answer", "text": "Personalized outreach based on real account intelligence achieves 2–3× higher reply rates than templated messaging. Scout automates the research required to personalize at scale, reducing prep time by 60% per rep." } },
+      { "@type": "Question", "name": "How does 450Digital help sales reps save time on research?", "acceptedAnswer": { "@type": "Answer", "text": "Scout delivers a full account brief — financials, hiring trends, strategic priorities, and suggested outreach angles — in under 30 seconds. Reps who previously spent 45–60 minutes researching per account can now cover their full pipeline with consistent quality." } }
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
@@ -16,6 +50,7 @@
       --blue:   #1B2B6B;
       --accent: #2B7DE9;
       --gold:   #C9A84C;
+      --orange: #FF5C35;
       --white:  #FFFFFF;
       --cream:  #F0EEE8;
       --muted:  rgba(240,238,232,0.55);
@@ -25,6 +60,8 @@
     html{scroll-behavior:smooth}
     body{background:var(--dark);color:var(--cream);font-family:'Montserrat',sans-serif;font-weight:300;line-height:1.6;overflow-x:hidden}
     body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(43,125,233,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(43,125,233,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
+
+    /* NAV */
     nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);backdrop-filter:blur(16px);background:rgba(10,14,36,0.85)}
     .nav-logo{text-decoration:none;font-family:'Montserrat',sans-serif;font-weight:700;font-size:20px;color:var(--white);letter-spacing:-0.02em}
     .nav-logo span{color:var(--accent)}
@@ -33,6 +70,8 @@
     .nav-links a:hover{color:var(--white)}
     .nav-cta{padding:10px 22px;background:var(--accent);color:var(--white)!important;border-radius:6px;font-weight:600!important;transition:all 0.2s!important}
     .nav-cta:hover{background:#1a6dd4!important;transform:translateY(-1px)}
+
+    /* HERO */
     .hero{min-height:100vh;display:flex;align-items:center;padding:120px 48px 80px;position:relative;z-index:1;overflow:hidden}
     .hero::after{content:'';position:absolute;top:10%;right:-5%;width:50vw;height:70vh;background:radial-gradient(ellipse,rgba(27,43,107,0.5) 0%,transparent 70%);pointer-events:none}
     .hero-inner{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
@@ -47,32 +86,65 @@
     .btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border:1px solid var(--border);color:var(--cream);border-radius:6px;font-size:13px;font-weight:500;text-decoration:none;transition:all 0.2s}
     .btn-ghost:hover{border-color:rgba(240,238,232,0.3);background:rgba(240,238,232,0.05)}
     .hero-right{opacity:0;animation:fadeUp 0.7s ease 0.5s forwards}
-    .credential-card{background:rgba(13,18,53,0.8);border:1px solid rgba(43,125,233,0.2);border-radius:16px;padding:36px;backdrop-filter:blur(8px)}
-    .credential-header{display:flex;align-items:center;gap:14px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border)}
-    .credential-avatar{width:52px;height:52px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;font-size:22px;color:var(--gold);flex-shrink:0;border:2px solid rgba(201,168,76,0.3)}
-    .credential-name{font-size:15px;font-weight:600;color:var(--white)}
-    .credential-title{font-size:11px;color:var(--muted);margin-top:2px}
-    .credential-stat{font-family:'Lora',serif;font-size:11px;font-weight:600;color:var(--gold);margin-top:4px;letter-spacing:0.05em}
-    .credential-logos{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
-    .credential-logo-pill{font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:20px;padding:4px 12px}
-    .credential-quote{font-size:12px;color:var(--muted);line-height:1.65;font-style:italic;border-left:2px solid var(--accent);padding-left:14px}
+
+    /* HERO RIGHT — outcomes card (replaces personal credential card) */
+    .outcomes-card{background:rgba(13,18,53,0.8);border:1px solid rgba(43,125,233,0.2);border-radius:16px;padding:36px;backdrop-filter:blur(8px)}
+    .outcomes-card-label{font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+    .outcomes-card-label::before{content:'';width:20px;height:1px;background:var(--accent)}
+    .outcomes-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+    .outcome-stat{background:rgba(27,43,107,0.4);border:1px solid var(--border);border-radius:10px;padding:18px 16px}
+    .outcome-num{font-family:'Lora',serif;font-size:36px;color:var(--white);letter-spacing:-0.03em;line-height:1;margin-bottom:6px}
+    .outcome-num span{color:var(--orange)}
+    .outcome-desc{font-size:11px;color:var(--muted);line-height:1.5}
+    .outcomes-pedigree{border-top:1px solid var(--border);padding-top:20px}
+    .pedigree-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+    .pedigree-pills{display:flex;flex-wrap:wrap;gap:6px}
+    .pedigree-pill{font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:20px;padding:4px 12px}
+
+    /* STATS BAR */
     .stats-bar{padding:60px 48px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(13,18,53,0.4);position:relative;z-index:1}
     .stats-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
     .stat-item{text-align:center}
     .stat-num{font-family:'Lora',serif;font-size:42px;color:var(--white);letter-spacing:-0.03em;line-height:1;margin-bottom:8px}
     .stat-num span{color:var(--gold)}
     .stat-label{font-size:12px;color:var(--muted);line-height:1.5}
+
+    /* SCOUT SECTION */
+    .scout-section{padding:100px 48px;border-top:1px solid var(--border);position:relative;z-index:1;overflow:hidden}
+    .scout-section::before{content:'';position:absolute;top:0;right:0;width:40vw;height:100%;background:radial-gradient(ellipse at right center,rgba(255,92,53,0.06) 0%,transparent 70%);pointer-events:none}
+    .scout-inner{max-width:1100px;margin:0 auto}
+    .scout-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:48px}
+    .scout-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,92,53,0.12);border:1px solid rgba(255,92,53,0.25);border-radius:20px;padding:5px 14px;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:20px}
+    .scout-headline{font-family:'Lora',serif;font-size:clamp(24px,3.5vw,38px);color:var(--white);letter-spacing:-0.02em;line-height:1.2;margin-bottom:16px}
+    .scout-headline em{font-style:italic;color:var(--gold)}
+    .scout-sub{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:28px}
+    .scout-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
+    .scout-stat{text-align:center;background:rgba(13,18,53,0.6);border:1px solid var(--border);border-radius:10px;padding:16px 12px}
+    .scout-stat-num{font-family:'Lora',serif;font-size:28px;color:var(--orange);letter-spacing:-0.03em;line-height:1;margin-bottom:4px}
+    .scout-stat-label{font-size:10px;color:var(--muted);line-height:1.5}
+    .scout-bullets{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+    .scout-bullets li{font-size:13px;color:var(--muted);display:flex;align-items:flex-start;gap:10px;line-height:1.5}
+    .scout-bullets li::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:var(--orange);flex-shrink:0;margin-top:6px}
+    .scout-how{background:rgba(13,18,53,0.7);border:1px solid rgba(43,125,233,0.15);border-radius:14px;padding:28px}
+    .scout-how-title{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+    .scout-step{display:flex;gap:14px;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--border)}
+    .scout-step:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+    .scout-step-num{width:28px;height:28px;border-radius:50%;background:rgba(43,125,233,0.15);border:1px solid rgba(43,125,233,0.3);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--accent);flex-shrink:0}
+    .scout-step-content{}
+    .scout-step-title{font-size:13px;font-weight:600;color:var(--white);margin-bottom:3px}
+    .scout-step-desc{font-size:12px;color:var(--muted);line-height:1.5}
+    .scout-cta-row{display:flex;gap:12px;flex-wrap:wrap}
+
+    /* PRODUCTS */
     .products{padding:100px 48px;border-top:1px solid var(--border);position:relative;z-index:1}
     .section-inner{max-width:1100px;margin:0 auto}
     .section-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:10px}
     .section-eyebrow::before{content:'';width:20px;height:1px;background:var(--accent)}
     .section-headline{font-family:'Lora',serif;font-size:clamp(28px,4vw,44px);color:var(--white);letter-spacing:-0.02em;margin-bottom:48px;line-height:1.15}
     .section-headline em{font-style:italic;color:var(--gold)}
-    .products-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:16px}
+    .products-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
     .product-card{background:rgba(13,18,53,0.5);border:1px solid var(--border);border-radius:12px;padding:32px;transition:all 0.3s;position:relative}
     .product-card:hover{border-color:rgba(43,125,233,0.3);background:rgba(13,18,53,0.8);transform:translateY(-2px)}
-    .product-card.featured{border-color:rgba(43,125,233,0.25);background:rgba(27,43,107,0.25)}
-    .product-badge{position:absolute;top:16px;right:16px;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.3);background:rgba(201,168,76,0.1);padding:3px 10px;border-radius:20px}
     .product-icon{font-size:28px;margin-bottom:16px;display:block}
     .product-name{font-family:'Lora',serif;font-size:22px;color:var(--white);margin-bottom:10px;letter-spacing:-0.01em}
     .product-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:20px}
@@ -81,40 +153,59 @@
     .product-bullets li::before{content:'–';color:var(--accent);flex-shrink:0}
     .product-link{font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:gap 0.2s}
     .product-link:hover{gap:10px}
-    .testimonial{padding:100px 48px;position:relative;z-index:1}
-    .testimonial-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-    .testimonial-quote{font-family:'Lora',serif;font-size:clamp(16px,2.2vw,24px);font-style:italic;color:var(--cream);line-height:1.5;position:relative;padding-left:28px}
-    .testimonial-quote::before{content:'"';position:absolute;left:0;top:-8px;font-size:60px;color:var(--accent);line-height:1;font-family:'Lora',serif}
-    .testimonial-name{font-size:14px;font-weight:600;color:var(--white);margin-top:24px}
-    .testimonial-role{font-size:12px;color:var(--muted);margin-top:2px}
-    .stat-highlight{background:rgba(13,18,53,0.8);border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:32px;text-align:center;margin-bottom:16px}
+
+    /* ABOUT / TESTIMONIAL */
+    .about-section{padding:100px 48px;position:relative;z-index:1;border-top:1px solid var(--border)}
+    .about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+    .about-left{}
+    .about-body{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:24px}
+    .about-body strong{color:var(--cream);font-weight:500}
+    .about-pedigree{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+    .about-pill{font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:20px;padding:4px 12px}
+    .testimonial-stack{display:flex;flex-direction:column;gap:16px}
+    .testimonial-card{background:rgba(13,18,53,0.6);border:1px solid var(--border);border-radius:12px;padding:24px}
+    .testimonial-quote{font-family:'Lora',serif;font-size:14px;font-style:italic;color:var(--cream);line-height:1.65;margin-bottom:16px;position:relative;padding-left:20px}
+    .testimonial-quote::before{content:'"';position:absolute;left:0;top:-4px;font-size:40px;color:var(--accent);line-height:1;font-family:'Lora',serif}
+    .testimonial-name{font-size:12px;font-weight:600;color:var(--white)}
+    .testimonial-role{font-size:11px;color:var(--muted);margin-top:2px}
+    .stat-highlight{background:rgba(13,18,53,0.8);border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:28px;text-align:center}
     .stat-highlight-num{font-family:'Lora',serif;font-size:52px;color:var(--gold);letter-spacing:-0.03em;line-height:1;margin-bottom:8px}
     .stat-highlight-label{font-size:13px;color:var(--muted);line-height:1.5}
+
+    /* CTA */
     .cta-section{padding:100px 48px;border-top:1px solid var(--border);text-align:center;position:relative;z-index:1}
     .cta-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:100%;background:radial-gradient(ellipse at center top,rgba(27,43,107,0.4) 0%,transparent 70%);pointer-events:none}
     .cta-headline{font-family:'Lora',serif;font-size:clamp(32px,5vw,54px);letter-spacing:-0.02em;color:var(--white);margin-bottom:16px;position:relative}
     .cta-sub{font-size:15px;color:var(--muted);margin-bottom:40px;position:relative}
     .cta-actions{display:flex;align-items:center;justify-content:center;gap:16px;position:relative}
+
+    /* FOOTER */
     footer{padding:28px 48px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
     .footer-brand{font-family:'Lora',serif;font-size:16px;color:var(--muted)}
     .footer-links{display:flex;gap:24px}
     .footer-links a{font-size:12px;color:var(--muted);text-decoration:none;transition:color 0.2s}
     .footer-links a:hover{color:var(--white)}
     .footer-copy{font-size:11px;color:rgba(240,238,232,0.25)}
+
     @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
     .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
     .fade-in.visible{opacity:1;transform:translateY(0)}
+
     @media(max-width:900px){
       nav{padding:16px 20px}
       .nav-links{display:none}
       .hero{padding:100px 20px 60px}
       .hero-inner{grid-template-columns:1fr;gap:40px}
+      .outcomes-grid{grid-template-columns:1fr 1fr}
+      .scout-section{padding:60px 20px}
+      .scout-grid{grid-template-columns:1fr;gap:40px}
+      .scout-stats{grid-template-columns:repeat(3,1fr)}
       .products{padding:60px 20px}
       .products-grid{grid-template-columns:1fr}
       .stats-grid{grid-template-columns:repeat(2,1fr);gap:24px}
       .stats-bar{padding:40px 20px}
-      .testimonial{padding:60px 20px}
-      .testimonial-inner{grid-template-columns:1fr;gap:40px}
+      .about-section{padding:60px 20px}
+      .about-inner{grid-template-columns:1fr;gap:40px}
       .cta-section{padding:60px 20px}
       footer{padding:20px;flex-direction:column;gap:12px;text-align:center}
     }
@@ -125,13 +216,14 @@
   <nav>
     <a href="/" class="nav-logo">450<span>Digital</span></a>
     <div class="nav-links">
+      <a href="#scout">Scout</a>
       <a href="#products">Products</a>
       <a href="#about">About</a>
-      <a href="https://scout.450digital.com">Scout</a>
-      <a href="mailto:jeff@450digital.com" class="nav-cta">Get Started</a>
+      <a href="https://scout.450digital.com" class="nav-cta">Try Scout Free</a>
     </div>
   </nav>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-left">
@@ -142,42 +234,53 @@
           Build the Funnel.
         </h1>
         <p class="hero-sub">
-          After 18+ years driving double-digit pipeline growth at Oracle Marketing Cloud, DocuSign, Sprinklr, and Alteryx — Jeff Massamillo built 450Digital to combine proven demand generation strategy with AI. The result: tools that find, engage, and convert more revenue.
+          18+ years of double-digit pipeline growth at Oracle, DocuSign, Sprinklr, and Alteryx — distilled into AI tools that find, engage, and convert more revenue. Built by practitioners, for teams that close.
         </p>
         <div class="hero-actions">
           <a href="https://scout.450digital.com" class="btn-primary">
             Try Scout Free
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="mailto:jeff@450digital.com" class="btn-ghost">Talk to US</a>
+          <a href="mailto:jeff@450digital.com" class="btn-ghost">Talk to Us</a>
         </div>
       </div>
       <div class="hero-right">
-        <div class="credential-card">
-          <div class="credential-header">
-            <div class="credential-avatar">J</div>
-            <div>
-              <div class="credential-name">Jeff Massamillo</div>
-              <div class="credential-title">Founder, 450Digital</div>
-              <div class="credential-stat">18+ Years · Double-Digit Pipeline Growth</div>
+        <div class="outcomes-card">
+          <div class="outcomes-card-label">Scout — what it delivers</div>
+          <div class="outcomes-grid">
+            <div class="outcome-stat">
+              <div class="outcome-num">2–3<span>×</span></div>
+              <div class="outcome-desc">higher reply rates with personalized outreach</div>
+            </div>
+            <div class="outcome-stat">
+              <div class="outcome-num">60<span>%</span></div>
+              <div class="outcome-desc">less time spent on pre-call research per rep</div>
+            </div>
+            <div class="outcome-stat">
+              <div class="outcome-num">&lt;30<span>s</span></div>
+              <div class="outcome-desc">to full account brief, any prospect</div>
+            </div>
+            <div class="outcome-stat">
+              <div class="outcome-num">22<span>%</span></div>
+              <div class="outcome-desc">dormant trial users converted in 60 days</div>
             </div>
           </div>
-          <div class="credential-logos">
-            <span class="credential-logo-pill">Oracle</span>
-            <span class="credential-logo-pill">DocuSign</span>
-            <span class="credential-logo-pill">Sprinklr</span>
-            <span class="credential-logo-pill">Alteryx</span>
-            <span class="credential-logo-pill">Genesys</span>
+          <div class="outcomes-pedigree">
+            <div class="pedigree-label">Built on experience from</div>
+            <div class="pedigree-pills">
+              <span class="pedigree-pill">Oracle</span>
+              <span class="pedigree-pill">DocuSign</span>
+              <span class="pedigree-pill">Sprinklr</span>
+              <span class="pedigree-pill">Alteryx</span>
+              <span class="pedigree-pill">Genesys</span>
+            </div>
           </div>
-          <p class="credential-quote">
-            "Jeff is a marketing powerhouse. His expertise spans demand generation, brand management, operations, and strategy. For companies seeking visionary marketing leadership, 450Digital is a game-changer."
-          </p>
-          <div style="margin-top:12px;font-size:11px;color:var(--muted);">— Morgan Kirkland, Global VP Sales Development</div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- STATS BAR -->
   <div class="stats-bar fade-in">
     <div class="stats-grid">
       <div class="stat-item">
@@ -199,34 +302,96 @@
     </div>
   </div>
 
+  <!-- SCOUT SECTION -->
+  <section class="scout-section fade-in" id="scout">
+    <div class="scout-inner">
+      <div class="section-eyebrow">Flagship Product</div>
+      <h2 class="section-headline">Your reps shouldn't spend an hour<br/><em>researching before every call.</em></h2>
+      <div class="scout-grid">
+        <div>
+          <div class="scout-badge">Scout · Now Available</div>
+          <p class="scout-sub">Scout is an AI-powered account research tool built into Salesforce and available as a Chrome extension. In under 30 seconds, it surfaces everything a rep needs to have a relevant, personalized conversation — so more time goes to selling, not searching.</p>
+          <div class="scout-stats">
+            <div class="scout-stat">
+              <div class="scout-stat-num">60%</div>
+              <div class="scout-stat-label">less research time per rep</div>
+            </div>
+            <div class="scout-stat">
+              <div class="scout-stat-num">2–3×</div>
+              <div class="scout-stat-label">reply rate lift with personalization</div>
+            </div>
+            <div class="scout-stat">
+              <div class="scout-stat-num">&lt;30s</div>
+              <div class="scout-stat-label">full account brief, any prospect</div>
+            </div>
+          </div>
+          <ul class="scout-bullets">
+            <li>SEC filings + AI analysis of strategic priorities and risk factors</li>
+            <li>Hiring signal detection — know what they're building before you call</li>
+            <li>Competitive displacement angles tailored to your product</li>
+            <li>1-click personalized outreach emails and multi-step cadences</li>
+            <li>Works natively in Salesforce and as a standalone Chrome extension</li>
+          </ul>
+          <div class="scout-cta-row">
+            <a href="https://scout.450digital.com" class="btn-primary">
+              Try Scout Free
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="mailto:jeff@450digital.com" class="btn-ghost">Get a Demo</a>
+          </div>
+        </div>
+        <div>
+          <div class="scout-how">
+            <div class="scout-how-title">How Scout works</div>
+            <div class="scout-step">
+              <div class="scout-step-num">1</div>
+              <div class="scout-step-content">
+                <div class="scout-step-title">Open any account</div>
+                <div class="scout-step-desc">Navigate to a Salesforce record or any company page in Chrome. Scout activates automatically.</div>
+              </div>
+            </div>
+            <div class="scout-step">
+              <div class="scout-step-num">2</div>
+              <div class="scout-step-content">
+                <div class="scout-step-title">AI builds the brief</div>
+                <div class="scout-step-desc">Scout pulls SEC filings, news, hiring data, and competitive signals — then surfaces the insights that matter for your product.</div>
+              </div>
+            </div>
+            <div class="scout-step">
+              <div class="scout-step-num">3</div>
+              <div class="scout-step-content">
+                <div class="scout-step-title">Personalized outreach, ready to send</div>
+                <div class="scout-step-desc">Get a tailored opening email and cadence built around what's actually happening at that account — not a generic template.</div>
+              </div>
+            </div>
+            <div class="scout-step">
+              <div class="scout-step-num">4</div>
+              <div class="scout-step-content">
+                <div class="scout-step-title">Ship it in under 30 seconds</div>
+                <div class="scout-step-desc">From zero to fully-researched, personalized, ready to send — before you even finish your coffee.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
   <section class="products fade-in" id="products">
     <div class="section-inner">
       <div class="section-eyebrow">The 450Digital Suite</div>
       <h2 class="section-headline">Stop Letting Opportunities<br/><em>Slip Away</em></h2>
       <div class="products-grid">
-        <div class="product-card featured">
-          <span class="product-badge">New · Flagship</span>
-          <span class="product-icon">🔍</span>
-          <div class="product-name">Scout</div>
-          <p class="product-desc">AI account intelligence in 30 seconds. Research any prospect — strategic priorities, competitive signals, capability fit, and personalized outreach cadences. Before every call.</p>
-          <ul class="product-bullets">
-            <li>SEC filings + AI analysis of strategic priorities</li>
-            <li>Capability fit scoring against your product</li>
-            <li>Competitive displacement angles</li>
-            <li>1-click discovery emails and multi-step cadences</li>
-            <li>Chrome extension — works anywhere</li>
-          </ul>
-          <a href="https://scout.450digital.com" class="product-link">Try Scout free →</a>
-        </div>
         <div class="product-card">
           <span class="product-icon">💬</span>
           <div class="product-name">SMS Agents</div>
           <p class="product-desc">Reactivate cold databases, recover abandoned carts, and accelerate speed-to-lead with AI-powered SMS conversations running 24/7.</p>
           <ul class="product-bullets">
-            <li>Database reactivation</li>
-            <li>Abandoned cart recovery</li>
-            <li>Speed-to-lead follow-up</li>
-            <li>Two-way conversational SMS</li>
+            <li>Database reactivation — wake up dormant leads at scale</li>
+            <li>Abandoned cart recovery with smart follow-up nudges</li>
+            <li>Speed-to-lead: respond to new inquiries instantly</li>
+            <li>Two-way conversational SMS that qualifies and converts</li>
           </ul>
           <a href="mailto:jeff@450digital.com" class="product-link">Learn more →</a>
         </div>
@@ -235,10 +400,10 @@
           <div class="product-name">Voice Agents</div>
           <p class="product-desc">AI voice agents that handle inbound calls, qualify leads, answer questions, and book meetings — so your team focuses on closing.</p>
           <ul class="product-bullets">
-            <li>Inbound lead qualification</li>
-            <li>After-hours coverage</li>
-            <li>Appointment booking</li>
-            <li>Seamless team handoff</li>
+            <li>Inbound lead qualification and routing</li>
+            <li>After-hours coverage — never miss an inquiry</li>
+            <li>Appointment booking and calendar integration</li>
+            <li>Seamless handoff to human reps when it counts</li>
           </ul>
           <a href="mailto:jeff@450digital.com" class="product-link">Learn more →</a>
         </div>
@@ -246,29 +411,55 @@
     </div>
   </section>
 
-  <section class="testimonial fade-in" id="about">
-    <div class="testimonial-inner">
-      <div>
-        <div class="section-eyebrow">What clients say</div>
-        <blockquote class="testimonial-quote">
-          Jeff is an exceptional demand gen and digital marketing expert. He delivered high-impact campaigns, driving measurable growth with data-driven insights and creative execution. A strategic thinker, a creative problem-solver, and a fantastic collaborator.
-        </blockquote>
-        <div class="testimonial-name">Nicole Granucci</div>
-        <div class="testimonial-role">Vice President Product Marketing, Alteryx</div>
+  <!-- ABOUT -->
+  <section class="about-section fade-in" id="about">
+    <div class="about-inner">
+      <div class="about-left">
+        <div class="section-eyebrow">About 450Digital</div>
+        <h2 class="section-headline" style="margin-bottom:24px;">Measurable outcomes.<br/><em>Not marketing theory.</em></h2>
+        <p class="about-body">
+          450Digital was built on a single belief: <strong>pipeline growth is an engineering problem, not a creativity contest.</strong> Our work spans demand generation strategy, AI-powered outreach tooling, and sales automation — all designed to produce numbers you can put in a board deck.
+        </p>
+        <p class="about-body">
+          We combine <strong>18+ years of hands-on demand generation experience</strong> at some of the most competitive SaaS companies in the world with AI that works 24/7. The result is a practice that recovers lost pipeline, equips reps with real account intelligence, and accelerates revenue without adding headcount.
+        </p>
+        <p class="about-body">
+          Our approach isn't about chasing trends. It's about <strong>building systems that endure and convert</strong> — real-time analytics, seamless lead delivery, and tailored nurturing on a foundation that doesn't need to be rebuilt every 18 months.
+        </p>
+        <div class="about-pedigree">
+          <span class="about-pill">Oracle Marketing Cloud</span>
+          <span class="about-pill">DocuSign</span>
+          <span class="about-pill">Sprinklr</span>
+          <span class="about-pill">Alteryx</span>
+          <span class="about-pill">Genesys</span>
+        </div>
       </div>
       <div>
-        <div class="stat-highlight">
-          <div class="stat-highlight-num">22%</div>
-          <div class="stat-highlight-label">Of dormant SaaS trial users converted in 60 days using AI agents</div>
-        </div>
-        <div style="background:rgba(13,18,53,0.6);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;">
-          <div style="font-family:'Lora',serif;font-size:13px;font-style:italic;color:var(--muted);line-height:1.6;">"AI agents converted 22% of dormant SaaS trial users in 60 days."</div>
-          <div style="margin-top:12px;font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);">450Digital Case Study</div>
+        <div class="testimonial-stack">
+          <div class="stat-highlight" style="margin-bottom:16px;">
+            <div class="stat-highlight-num">22%</div>
+            <div class="stat-highlight-label">Of dormant SaaS trial users converted in 60 days using AI agents</div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-quote">
+              Jeff is an exceptional demand gen and digital marketing expert. He delivered high-impact campaigns, driving measurable growth with data-driven insights and creative execution — a strategic thinker and a fantastic collaborator.
+            </p>
+            <div class="testimonial-name">Nicole Granucci</div>
+            <div class="testimonial-role">Vice President Product Marketing, Alteryx</div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-quote">
+              For companies seeking visionary marketing leadership, 450Digital is a game-changer. Working with this team isn't just smart — it's a strategic edge.
+            </p>
+            <div class="testimonial-name">Morgan Kirkland</div>
+            <div class="testimonial-role">Global Vice President, Sales Development</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- CTA -->
   <section class="cta-section fade-in">
     <h2 class="cta-headline">Ready to stop losing deals<br/>you already paid for?</h2>
     <p class="cta-sub">Start with Scout — research any account in 30 seconds, free.</p>
@@ -290,16 +481,10 @@
   </footer>
 
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
+    }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
-
 </body>
 </html>
