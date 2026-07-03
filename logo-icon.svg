@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg data-bbox="20 15 206 344" overflow="hidden" xmlns="http://www.w3.org/2000/svg" height="376" width="248" data-type="color">
+    <g>
+        <path fill-rule="evenodd" fill="#0E2841" d="M20 187.5c0-19.05 15.22-34.5 34-34.5s34 15.45 34 34.5S72.78 222 54 222s-34-15.45-34-34.5" data-color="1"/>
+        <path fill-rule="evenodd" fill="#0E2841" d="M88 118.5C88 99.45 103.45 84 122.5 84S157 99.45 157 118.5 141.55 153 122.5 153 88 137.55 88 118.5" data-color="1"/>
+        <path fill-rule="evenodd" fill="#7BD5F0" d="M157 187.5c0-19.05 15.45-34.5 34.5-34.5s34.5 15.45 34.5 34.5-15.45 34.5-34.5 34.5-34.5-15.45-34.5-34.5" data-color="2"/>
+        <path fill-rule="evenodd" fill="#7BD5F0" d="M157 49.5c0-19.05 15.45-34.5 34.5-34.5S226 30.45 226 49.5 210.55 84 191.5 84 157 68.55 157 49.5" data-color="2"/>
+        <path fill-rule="evenodd" fill="#7BD5F0" d="M157 324.5c0-19.05 15.45-34.5 34.5-34.5s34.5 15.45 34.5 34.5-15.45 34.5-34.5 34.5-34.5-15.45-34.5-34.5" data-color="2"/>
+    </g>
+</svg>

@@ -100,6 +100,7 @@
     ]
   }
   </script>
+  <link rel="icon" type="image/svg+xml" href="/logo-icon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -180,6 +181,8 @@
       color: var(--ink); text-decoration: none; letter-spacing: -0.03em;
     }
     .logo span { color: var(--accent); }
+    .logo { display: inline-flex; align-items: center; gap: 9px; }
+    .logo-mark { height: 26px; width: auto; display: block; }
     .nav-links { display: flex; gap: 30px; align-items: center; }
     .nav-links a {
       color: var(--smoke); text-decoration: none; font-size: 0.92rem; font-weight: 500;
@@ -296,6 +299,10 @@
     .training ul li { padding: 10px 0 10px 32px; position: relative; color: var(--ink); font-size: 0.98rem; }
     .training ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
     .playbook { background: var(--navy-deep); border-radius: var(--r-tile); padding: 42px 38px; }
+    .playbook-cover {
+      display: block; width: 62%; max-width: 260px; height: auto;
+      margin: -70px auto 22px; filter: drop-shadow(0 18px 30px rgba(10,14,36,0.45));
+    }
     .playbook h3 { font-size: 1.3rem; margin-bottom: 12px; color: #fff; }
     .playbook p { font-size: 0.95rem; margin-bottom: 28px; color: rgba(255,255,255,0.72); }
     .playbook .eyebrow { color: #6FA5EE; }
@@ -419,7 +426,7 @@
 
 <header>
   <div class="wrap nav">
-    <a class="logo" href="#top">450<span>Digital</span></a>
+    <a class="logo" href="#top"><img class="logo-mark" src="/logo-icon.svg" alt="" />450<span>Digital</span></a>
     <button class="nav-toggle" aria-label="Open menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
     <nav class="nav-links">
       <a href="#agents">AI Agents</a>
@@ -611,6 +618,7 @@
         </div>
       </div>
       <div class="playbook">
+        <img class="playbook-cover" src="/playbook-cover.png" alt="The Engagement Playbook Series — From Engagement to Revenue: Strengthening the Foundations for Pipeline Growth" loading="lazy" />
         <span class="eyebrow" style="margin-bottom:14px;">Free Resource</span>
         <h3>The Engagement Playbook Series</h3>
         <p>A practical playbook for re-engaging your database and building conversion-focused journeys — the same frameworks used in our client engagements.</p>
@@ -746,7 +754,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="foot-logo">450<span>Digital</span></div>
+        <div class="foot-logo"><img class="logo-mark" src="/logo-icon.svg" alt="" style="height:22px;vertical-align:-4px;margin-right:8px;" />450<span>Digital</span></div>
         <p>AI agents and demand generation foundations for B2B revenue teams. Built by practitioners, for teams that close.</p>
       </div>
       <div>
