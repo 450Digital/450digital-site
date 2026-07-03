@@ -1,598 +1,778 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>450Digital — AI Revenue Tools for B2B Sales Teams</title>
-  <meta name="description" content="450Digital builds AI-powered revenue tools for B2B sales teams. Scout delivers instant account intelligence — cutting research time by 60% and improving personalized outreach reply rates by 2–3×. SMS and voice agents close the loop on lost pipeline." />
+  <title>450Digital — AI Agents & Demand Generation for B2B Revenue Teams</title>
+  <meta name="description" content="450Digital builds AI agents that recover lost revenue — dormant leads, abandoned carts, missed calls — plus Recon, the AI account intelligence tool, all on proven demand generation foundations." />
+  <link rel="canonical" href="https://www.450digital.com/" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#0D1235" />
 
-  <!-- Structured data for AI search engines -->
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="450Digital" />
+  <meta property="og:title" content="450Digital — AI Agents & Demand Generation for B2B Revenue Teams" />
+  <meta property="og:description" content="AI agents that recover what others leave behind: dormant leads, abandoned carts, after-hours calls. Plus Recon — AI account intelligence in under 30 seconds." />
+  <meta property="og:url" content="https://www.450digital.com/" />
+  <meta property="og:image" content="https://www.450digital.com/scarlet-witch.jpg" />
+  <meta property="og:image:alt" content="The Scarlet Witch — the hand-restored 1971 Honda CB450 café racer that gave 450Digital its name" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="450Digital — AI Agents & Demand Generation for B2B Revenue Teams" />
+  <meta name="twitter:description" content="AI agents that recover what others leave behind: dormant leads, abandoned carts, after-hours calls. Plus Recon — AI account intelligence in under 30 seconds." />
+  <meta name="twitter:image" content="https://www.450digital.com/scarlet-witch.jpg" />
+
+  <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "450Digital",
-    "url": "https://www.450digital.com",
-    "description": "450Digital builds AI-powered revenue tools for B2B sales teams. Products include Scout (AI account research), SMS reactivation agents, and voice agents. Founded by a team with 18+ years of demand generation experience at Oracle, DocuSign, Sprinklr, Alteryx, and Genesys.",
-    "address": { "@type": "PostalAddress", "addressLocality": "Austin", "addressRegion": "TX" },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "AI Revenue Tools",
-      "itemListElement": [
-        { "@type": "Offer", "name": "Scout", "description": "AI account research tool. Surfaces SEC filings, hiring signals, and strategic priorities in under 30 seconds. Reduces research time by 60%. Increases personalized outreach reply rates 2–3×." },
-        { "@type": "Offer", "name": "SMS Agents", "description": "AI-powered SMS conversations for database reactivation, abandoned cart recovery, and speed-to-lead. Converts 22% of dormant leads in 60 days." },
-        { "@type": "Offer", "name": "Voice Agents", "description": "Inbound lead qualification and appointment booking via AI voice." }
-      ]
-    }
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      { "@type": "Question", "name": "What does 450Digital do?", "acceptedAnswer": { "@type": "Answer", "text": "450Digital builds AI-powered revenue tools for B2B sales teams. Their flagship product, Scout, gives reps instant account intelligence — financials, hiring signals, competitive context, and personalized outreach — in under 30 seconds. They also offer SMS and voice agents that reactivate dormant pipeline and handle inbound lead qualification around the clock." } },
-      { "@type": "Question", "name": "What is Scout and how does it work?", "acceptedAnswer": { "@type": "Answer", "text": "Scout is an AI account research tool that works as a Chrome extension and integrates natively with Salesforce. It pulls SEC filings, recent news, hiring trends, and competitive signals, then surfaces insights most relevant to your product and generates a personalized outreach email in under 30 seconds." } },
-      { "@type": "Question", "name": "How much does personalized outreach improve reply rates?", "acceptedAnswer": { "@type": "Answer", "text": "Personalized outreach based on real account intelligence consistently achieves 2–3× higher reply rates than generic templated messaging. Scout automates the research required to make every outreach feel bespoke, at scale." } },
-      { "@type": "Question", "name": "How much time does Scout save per rep?", "acceptedAnswer": { "@type": "Answer", "text": "Reps who manually research accounts typically spend 45–60 minutes per prospect. Scout compresses that to under 30 seconds — teams report an average 60% reduction in pre-call research time." } },
-      { "@type": "Question", "name": "Does Scout work with Salesforce?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Scout is built to work inside Salesforce so reps can access full account briefs without leaving their CRM. It also runs as a standalone Chrome extension for use on LinkedIn, company websites, or anywhere reps research prospects." } },
-      { "@type": "Question", "name": "What data sources does Scout use?", "acceptedAnswer": { "@type": "Answer", "text": "Scout pulls from SEC EDGAR filings (10-K, 10-Q, 8-K), real-time news and press releases, public hiring data and job postings, and company web presence. AI then surfaces the signals most relevant to your product — strategic priorities, risk factors, capability gaps, and expansion signals." } },
-      { "@type": "Question", "name": "What are the SMS and voice agents used for?", "acceptedAnswer": { "@type": "Answer", "text": "SMS agents handle database reactivation, abandoned cart recovery, and speed-to-lead follow-up. Voice agents manage inbound calls — qualifying leads, answering questions, and booking meetings. Both run 24/7 without adding headcount." } },
-      { "@type": "Question", "name": "How do I get access to Scout?", "acceptedAnswer": { "@type": "Answer", "text": "Scout is currently available by request. Submit a request via the website and 450Digital will follow up within one business day. Most teams are running live account research on day one with no long contracts or complex onboarding." } }
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.450digital.com/#org",
+        "name": "450 Digital, LLC",
+        "alternateName": "450Digital",
+        "url": "https://www.450digital.com/",
+        "email": "jeff@450digital.com",
+        "telephone": "+1-512-810-0049",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "5900 Balcones Drive, Suite 26681",
+          "addressLocality": "Austin",
+          "addressRegion": "TX",
+          "postalCode": "78731",
+          "addressCountry": "US"
+        },
+        "sameAs": ["https://www.linkedin.com/company/450digital"],
+        "description": "450Digital builds AI-powered revenue tools for B2B teams: AI agents that recover dormant leads, abandoned carts, and after-hours inquiries; Recon, an AI account intelligence tool for Salesforce and Chrome; and demand generation services and training.",
+        "knowsAbout": ["demand generation", "AI sales agents", "account intelligence", "lead scoring", "B2B marketing", "sales automation"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.450digital.com/#website",
+        "url": "https://www.450digital.com/",
+        "name": "450Digital",
+        "publisher": { "@id": "https://www.450digital.com/#org" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Recon",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web, Chrome, Salesforce",
+        "url": "https://scout.450digital.com",
+        "description": "Recon is an AI-powered account research tool that works as a Chrome extension and integrates natively with Salesforce. It surfaces SEC filings analysis, hiring signals, competitive angles, and personalized outreach for any account in under 30 seconds.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free trial" },
+        "publisher": { "@id": "https://www.450digital.com/#org" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.450digital.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does 450Digital do?",
+            "acceptedAnswer": { "@type": "Answer", "text": "450Digital builds AI-powered revenue tools for B2B teams. The flagship product, Recon, gives reps instant account intelligence — financials, hiring signals, competitive context, and personalized outreach — in under 30 seconds. The Agent Suite covers SMS and voice agents that reactivate dormant pipeline, recover abandoned carts, answer after-hours inquiries, and protect your reputation. Foundational demand generation services and training tie it all together." }
+          },
+          {
+            "@type": "Question",
+            "name": "What is Recon and how does it work?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Recon is an AI account research tool that works as a Chrome extension and integrates natively with Salesforce. When a rep opens any prospect account, Recon automatically pulls SEC filings, recent news, hiring trends, and competitive signals — then surfaces the insights most relevant to your product, along with a personalized outreach email and multi-step cadence. The full brief is ready in under 30 seconds." }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does personalized outreach improve reply rates?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Personalized outreach based on real account intelligence consistently achieves 2–3× higher reply rates than generic templated messaging. The difference is relevance — when a rep references a buyer's actual strategic priorities, recent announcements, or hiring signals, the message stands out. Recon automates the research required to make every message that specific." }
+          },
+          {
+            "@type": "Question",
+            "name": "Do the AI agents replace my sales team?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No — they handle the work your team would never get around to doing: reviving old databases, answering at 2 AM, chasing abandoned carts, replying to reviews. Every agent hands warm, qualified conversations to humans at the right moment, so reps spend their time closing rather than chasing." }
+          },
+          {
+            "@type": "Question",
+            "name": "What if our funnel fundamentals aren't in place yet?",
+            "acceptedAnswer": { "@type": "Answer", "text": "That's exactly what the Foundations services are for. Assessments, messaging work, nurture design, and attribution audits get the strategy right so AI has something solid to amplify — and the Demand Generation Foundations training brings your team along." }
+          }
+        ]
+      }
     ]
   }
   </script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --dark:   #0A0E24;
-      --navy:   #0D1235;
-      --blue:   #1B2B6B;
-      --accent: #2B7DE9;
-      --gold:   #C9A84C;
-      --orange: #FF5C35;
-      --white:  #FFFFFF;
-      --cream:  #F0EEE8;
-      --muted:  rgba(240,238,232,0.55);
-      --border: rgba(240,238,232,0.1);
+      --ink: #0D1235;
+      --smoke: #59627F;
+      --paper: #FDFDFC;
+      --fog: #EBF1FB;
+      --hairline: #E2E7F1;
+      --accent: #1663C7;
+      --azure: #2B7DE9;
+      --navy-deep: #0D1235;
+      --grid: rgba(13, 18, 53, 0.05);
+      --r-tile: 20px;
+      --r-pill: 999px;
     }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{background:var(--dark);color:var(--cream);font-family:'Montserrat',sans-serif;font-weight:300;line-height:1.6;overflow-x:hidden}
-    body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(43,125,233,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(43,125,233,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--ink);
+      background-color: var(--paper);
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 48px 48px;
+      line-height: 1.65;
+      font-size: 16.5px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+    section { padding: 120px 0; }
+    .rule { border: 0; border-top: 1px solid var(--hairline); }
 
-    /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);backdrop-filter:blur(16px);background:rgba(10,14,36,0.85)}
-    .nav-logo{text-decoration:none;font-family:'Montserrat',sans-serif;font-weight:700;font-size:20px;color:var(--white);letter-spacing:-0.02em}
-    .nav-logo span{color:var(--accent)}
-    .nav-links{display:flex;align-items:center;gap:32px}
-    .nav-links a{font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s}
-    .nav-links a:hover{color:var(--white)}
-    .nav-cta{padding:10px 22px;background:var(--accent);color:var(--white)!important;border-radius:6px;font-weight:600!important;transition:all 0.2s!important}
-    .nav-cta:hover{background:#1a6dd4!important;transform:translateY(-1px)}
+    h1, h2, h3 {
+      font-family: 'Inter Tight', 'Inter', sans-serif;
+      color: var(--ink); line-height: 1.06; letter-spacing: -0.035em;
+    }
+    h1 { font-size: clamp(2.7rem, 6.4vw, 4.7rem); font-weight: 800; }
+    h2 { font-size: clamp(2rem, 4.4vw, 3.1rem); font-weight: 700; letter-spacing: -0.03em; }
+    h3 { font-size: 1.14rem; font-weight: 700; letter-spacing: -0.015em; line-height: 1.3; }
+    p { color: var(--smoke); }
+    .lead { font-size: clamp(1.08rem, 1.6vw, 1.25rem); max-width: 620px; line-height: 1.6; }
+    .measure { max-width: 780px; }
 
-    /* HERO */
-    .hero{min-height:100vh;display:flex;align-items:center;padding:120px 48px 80px;position:relative;z-index:1;overflow:hidden}
-    .hero::after{content:'';position:absolute;top:10%;right:-5%;width:50vw;height:70vh;background:radial-gradient(ellipse,rgba(27,43,107,0.5) 0%,transparent 70%);pointer-events:none}
-    .hero-inner{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-    .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;opacity:0;animation:fadeUp 0.7s ease forwards}
-    .hero-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--accent)}
-    .hero-headline{font-family:'Lora',serif;font-size:clamp(38px,5.5vw,68px);line-height:1.08;letter-spacing:-0.02em;color:var(--white);margin-bottom:24px;opacity:0;animation:fadeUp 0.7s ease 0.12s forwards}
-    .hero-headline em{font-style:italic;color:var(--gold)}
-    .hero-sub{font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:40px;opacity:0;animation:fadeUp 0.7s ease 0.24s forwards}
-    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fadeUp 0.7s ease 0.36s forwards}
-    .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;background:var(--accent);color:white;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;letter-spacing:0.03em;transition:all 0.2s}
-    .btn-primary:hover{background:#1a6dd4;transform:translateY(-2px);box-shadow:0 12px 32px rgba(43,125,233,0.35)}
-    .btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border:1px solid var(--border);color:var(--cream);border-radius:6px;font-size:13px;font-weight:500;text-decoration:none;transition:all 0.2s}
-    .btn-ghost:hover{border-color:rgba(240,238,232,0.3);background:rgba(240,238,232,0.05)}
-    .hero-right{opacity:0;animation:fadeUp 0.7s ease 0.5s forwards}
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); display: block; margin-bottom: 20px;
+    }
 
-    /* HERO RIGHT — outcomes card (replaces personal credential card) */
-    .outcomes-card{background:rgba(13,18,53,0.8);border:1px solid rgba(43,125,233,0.2);border-radius:16px;padding:36px;backdrop-filter:blur(8px)}
-    .outcomes-card-label{font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:10px}
-    .outcomes-card-label::before{content:'';width:20px;height:1px;background:var(--accent)}
-    .outcomes-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
-    .outcome-stat{background:rgba(27,43,107,0.4);border:1px solid var(--border);border-radius:10px;padding:18px 16px}
-    .outcome-num{font-family:'Lora',serif;font-size:36px;color:var(--white);letter-spacing:-0.03em;line-height:1;margin-bottom:6px}
-    .outcome-num span{color:var(--orange)}
-    .outcome-desc{font-size:11px;color:var(--muted);line-height:1.5}
-    .outcomes-pedigree{border-top:1px solid var(--border);padding-top:20px}
-    .pedigree-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-    .pedigree-pills{display:flex;flex-wrap:wrap;gap:6px}
-    .pedigree-pill{font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:20px;padding:4px 12px}
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 15px 30px; border-radius: var(--r-pill);
+      font-weight: 600; font-size: 0.96rem; text-decoration: none;
+      transition: transform .12s ease, background .15s ease, color .15s ease;
+    }
+    .btn-ink { background: var(--accent); color: #fff; }
+    .btn-ink:hover { background: #1152A6; transform: translateY(-1px); }
+    .btn-quiet { color: var(--ink); padding: 15px 6px; }
+    .btn-quiet::after { content: "→"; color: var(--accent); transition: transform .15s ease; }
+    .btn-quiet:hover::after { transform: translateX(4px); }
+    .btn:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
 
-    /* STATS BAR */
-    .stats-bar{padding:60px 48px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(13,18,53,0.4);position:relative;z-index:1}
-    .stats-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
-    .stat-item{text-align:center}
-    .stat-num{font-family:'Lora',serif;font-size:42px;color:var(--white);letter-spacing:-0.03em;line-height:1;margin-bottom:8px}
-    .stat-num span{color:var(--gold)}
-    .stat-label{font-size:12px;color:var(--muted);line-height:1.5}
+    /* Nav */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(253, 253, 252, 0.85);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo {
+      font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 1.3rem;
+      color: var(--ink); text-decoration: none; letter-spacing: -0.03em;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a {
+      color: var(--smoke); text-decoration: none; font-size: 0.92rem; font-weight: 500;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      background: var(--accent); color: #fff !important;
+      padding: 10px 22px; border-radius: var(--r-pill); font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: #1152A6; }
+    .nav-toggle { display: none; background: none; border: 0; color: var(--ink); font-size: 1.6rem; cursor: pointer; }
 
-    /* SCOUT SECTION */
-    .scout-section{padding:100px 48px;border-top:1px solid var(--border);position:relative;z-index:1;overflow:hidden}
-    .scout-section::before{content:'';position:absolute;top:0;right:0;width:40vw;height:100%;background:radial-gradient(ellipse at right center,rgba(255,92,53,0.06) 0%,transparent 70%);pointer-events:none}
-    .scout-inner{max-width:1100px;margin:0 auto}
-    .scout-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:48px}
-    .scout-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,92,53,0.12);border:1px solid rgba(255,92,53,0.25);border-radius:20px;padding:5px 14px;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:20px}
-    .scout-headline{font-family:'Lora',serif;font-size:clamp(24px,3.5vw,38px);color:var(--white);letter-spacing:-0.02em;line-height:1.2;margin-bottom:16px}
-    .scout-headline em{font-style:italic;color:var(--gold)}
-    .scout-sub{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:28px}
-    .scout-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
-    .scout-stat{text-align:center;background:rgba(13,18,53,0.6);border:1px solid var(--border);border-radius:10px;padding:16px 12px}
-    .scout-stat-num{font-family:'Lora',serif;font-size:28px;color:var(--orange);letter-spacing:-0.03em;line-height:1;margin-bottom:4px}
-    .scout-stat-label{font-size:10px;color:var(--muted);line-height:1.5}
-    .scout-bullets{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
-    .scout-bullets li{font-size:13px;color:var(--muted);display:flex;align-items:flex-start;gap:10px;line-height:1.5}
-    .scout-bullets li::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:var(--orange);flex-shrink:0;margin-top:6px}
-    .scout-how{background:rgba(13,18,53,0.7);border:1px solid rgba(43,125,233,0.15);border-radius:14px;padding:28px}
-    .scout-how-title{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
-    .scout-step{display:flex;gap:14px;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--border)}
-    .scout-step:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
-    .scout-step-num{width:28px;height:28px;border-radius:50%;background:rgba(43,125,233,0.15);border:1px solid rgba(43,125,233,0.3);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--accent);flex-shrink:0}
-    .scout-step-content{}
-    .scout-step-title{font-size:13px;font-weight:600;color:var(--white);margin-bottom:3px}
-    .scout-step-desc{font-size:12px;color:var(--muted);line-height:1.5}
-    .scout-cta-row{display:flex;gap:12px;flex-wrap:wrap}
+    /* Hero */
+    .hero {
+      padding: 130px 0 0;
+      background: radial-gradient(1000px 460px at 18% -8%, rgba(43,125,233,0.10), transparent 62%);
+    }
+    .hero h1 { max-width: 900px; }
+    .hero .lead { margin: 30px 0 40px; }
+    .hero-actions { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
 
-    /* PRODUCTS */
-    .products{padding:100px 48px;border-top:1px solid var(--border);position:relative;z-index:1}
-    .section-inner{max-width:1100px;margin:0 auto}
-    .section-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:10px}
-    .section-eyebrow::before{content:'';width:20px;height:1px;background:var(--accent)}
-    .section-headline{font-family:'Lora',serif;font-size:clamp(28px,4vw,44px);color:var(--white);letter-spacing:-0.02em;margin-bottom:48px;line-height:1.15}
-    .section-headline em{font-style:italic;color:var(--gold)}
-    .products-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .product-card{background:rgba(13,18,53,0.5);border:1px solid var(--border);border-radius:12px;padding:32px;transition:all 0.3s;position:relative}
-    .product-card:hover{border-color:rgba(43,125,233,0.3);background:rgba(13,18,53,0.8);transform:translateY(-2px)}
-    .product-icon{font-size:28px;margin-bottom:16px;display:block}
-    .product-name{font-family:'Lora',serif;font-size:22px;color:var(--white);margin-bottom:10px;letter-spacing:-0.01em}
-    .product-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:20px}
-    .product-bullets{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:24px}
-    .product-bullets li{font-size:12px;color:var(--muted);display:flex;align-items:flex-start;gap:8px}
-    .product-bullets li::before{content:'–';color:var(--accent);flex-shrink:0}
-    .product-link{font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:gap 0.2s}
-    .product-link:hover{gap:10px}
+    /* Experience strip */
+    .exp {
+      margin-top: 100px; padding: 26px 0;
+      border-top: 1px solid var(--hairline);
+      display: flex; gap: 18px 44px; flex-wrap: wrap; align-items: baseline;
+    }
+    .exp .k {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
+      text-transform: uppercase; letter-spacing: 0.14em; color: var(--smoke);
+    }
+    .exp span:not(.k) {
+      font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 1.05rem;
+      color: #9AA5C4; letter-spacing: -0.01em;
+    }
 
-    /* ABOUT / TESTIMONIAL */
-    .about-section{padding:100px 48px;position:relative;z-index:1;border-top:1px solid var(--border)}
-    .about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-    .about-left{}
-    .about-body{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:24px}
-    .about-body strong{color:var(--cream);font-weight:500}
-    .about-pedigree{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
-    .about-pill{font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:20px;padding:4px 12px}
-    .testimonial-stack{display:flex;flex-direction:column;gap:16px}
-    .testimonial-card{background:rgba(13,18,53,0.6);border:1px solid var(--border);border-radius:12px;padding:24px}
-    .testimonial-quote{font-family:'Lora',serif;font-size:14px;font-style:italic;color:var(--cream);line-height:1.65;margin-bottom:16px;position:relative;padding-left:20px}
-    .testimonial-quote::before{content:'"';position:absolute;left:0;top:-4px;font-size:40px;color:var(--accent);line-height:1;font-family:'Lora',serif}
-    .testimonial-name{font-size:12px;font-weight:600;color:var(--white)}
-    .testimonial-role{font-size:11px;color:var(--muted);margin-top:2px}
-    .stat-highlight{background:rgba(13,18,53,0.8);border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:28px;text-align:center}
-    .stat-highlight-num{font-family:'Lora',serif;font-size:52px;color:var(--gold);letter-spacing:-0.03em;line-height:1;margin-bottom:8px}
-    .stat-highlight-label{font-size:13px;color:var(--muted);line-height:1.5}
+    /* Recovery ledger */
+    .ledger {
+      border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);
+      overflow: hidden; padding: 14px 0; background: var(--paper);
+    }
+    .ledger-track {
+      display: flex; gap: 56px; width: max-content;
+      animation: ledger 45s linear infinite;
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+      color: var(--smoke); white-space: nowrap;
+    }
+    .ledger-track b { color: var(--ink); font-weight: 500; }
+    .ledger-track .dot { color: var(--azure); }
+    @keyframes ledger { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { .ledger-track { animation: none; } }
 
-    /* CTA */
-    .cta-section{padding:100px 48px;border-top:1px solid var(--border);text-align:center;position:relative;z-index:1}
-    .cta-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:100%;background:radial-gradient(ellipse at center top,rgba(27,43,107,0.4) 0%,transparent 70%);pointer-events:none}
-    .cta-headline{font-family:'Lora',serif;font-size:clamp(32px,5vw,54px);letter-spacing:-0.02em;color:var(--white);margin-bottom:16px;position:relative}
-    .cta-sub{font-size:15px;color:var(--muted);margin-bottom:40px;position:relative}
-    .cta-actions{display:flex;align-items:center;justify-content:center;gap:16px;position:relative}
+    /* Agent tiles */
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 64px; }
+    .tile {
+      background: var(--fog); border-radius: var(--r-tile);
+      padding: 34px 30px;
+      transition: transform .15s ease;
+    }
+    .tile:hover { transform: translateY(-3px); }
+    .tile .icon { font-size: 1.5rem; margin-bottom: 20px; display: block; }
+    .tile h3 { margin-bottom: 10px; }
+    .tile p { font-size: 0.94rem; line-height: 1.6; }
 
-    /* FOOTER */
-    footer{padding:28px 48px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
-    .footer-brand{font-family:'Lora',serif;font-size:16px;color:var(--muted)}
-    .footer-links{display:flex;gap:24px}
-    .footer-links a{font-size:12px;color:var(--muted);text-decoration:none;transition:color 0.2s}
-    .footer-links a:hover{color:var(--white)}
-    .footer-copy{font-size:11px;color:rgba(240,238,232,0.25)}
+    /* Pull-quote stat */
+    .pull { padding: 110px 0; background: var(--navy-deep); }
+    .pull blockquote {
+      font-family: 'Inter Tight', sans-serif; font-weight: 700;
+      font-size: clamp(1.9rem, 4.6vw, 3.4rem); line-height: 1.12;
+      letter-spacing: -0.03em; color: #fff; max-width: 980px;
+    }
+    .pull blockquote em { font-style: normal; color: #5CA0F5; }
+    .pull cite {
+      display: block; margin-top: 26px; font-style: normal;
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem;
+      color: #6FA5EE; letter-spacing: 0.12em; text-transform: uppercase;
+    }
+
+    /* Recon */
+    .recon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; margin-top: 20px; }
+    .recon ul { list-style: none; margin-top: 30px; }
+    .recon ul li {
+      padding: 13px 0 13px 32px; position: relative;
+      color: var(--ink); font-size: 0.98rem; border-bottom: 1px solid var(--hairline);
+    }
+    .recon ul li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+    .steps { margin-top: 8px; }
+    .step { display: flex; gap: 22px; padding: 24px 0; border-bottom: 1px solid var(--hairline); }
+    .step:first-child { padding-top: 0; }
+    .step-num {
+      font-family: 'IBM Plex Mono', monospace; color: var(--accent);
+      font-size: 0.85rem; padding-top: 4px; min-width: 28px;
+    }
+    .step h3 { font-size: 1.02rem; margin-bottom: 5px; }
+    .step p { font-size: 0.93rem; }
+    .recon-actions { margin-top: 40px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+
+    /* Foundations */
+    .chips { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 64px; }
+    .chip { background: var(--fog); border-radius: var(--r-tile); padding: 28px 26px; }
+    .chip .tag {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.66rem;
+      color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em;
+      display: block; margin-bottom: 12px;
+    }
+    .chip h3 { font-size: 1rem; margin-bottom: 8px; }
+    .chip p { font-size: 0.88rem; line-height: 1.55; }
+    .svc-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px; }
+    .svc-2 .tile h3 { font-size: 1.08rem; }
+
+    /* Training */
+    .training-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 72px; align-items: center; }
+    .training ul { list-style: none; margin: 30px 0 40px; }
+    .training ul li { padding: 10px 0 10px 32px; position: relative; color: var(--ink); font-size: 0.98rem; }
+    .training ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+    .playbook { background: var(--navy-deep); border-radius: var(--r-tile); padding: 42px 38px; }
+    .playbook h3 { font-size: 1.3rem; margin-bottom: 12px; color: #fff; }
+    .playbook p { font-size: 0.95rem; margin-bottom: 28px; color: rgba(255,255,255,0.72); }
+    .playbook .eyebrow { color: #6FA5EE; }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 72px; margin-top: 20px; }
+    .about-copy p { margin-bottom: 20px; font-size: 1.05rem; }
+    .about-copy strong { color: var(--ink); font-weight: 600; }
+    .about-stats { display: grid; gap: 14px; align-content: start; }
+    .about-stat { background: var(--fog); border-radius: var(--r-tile); padding: 28px 30px; }
+    .about-stat .num {
+      font-family: 'Inter Tight', sans-serif; font-size: 2.4rem; font-weight: 800;
+      color: var(--ink); letter-spacing: -0.04em; line-height: 1;
+    }
+    .about-stat .lbl { font-size: 0.9rem; color: var(--smoke); margin-top: 6px; }
+
+    /* Origin — the one dark moment */
+    .origin { background: var(--navy-deep); border-radius: 0; }
+    .origin .eyebrow { color: #6FA5EE; }
+    .origin h2 { color: #fff; }
+    .origin-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 72px; align-items: center; margin-top: 20px; }
+    .origin figure { margin: 0; }
+    .origin img { width: 100%; height: auto; display: block; border-radius: var(--r-tile); }
+    .origin figcaption {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.45); margin-top: 16px;
+    }
+    .origin-copy p { color: rgba(255,255,255,0.72); margin-bottom: 20px; font-size: 1.05rem; }
+    .origin-copy strong { color: #fff; font-weight: 600; }
+    .origin-specs {
+      display: flex; gap: 14px 36px; flex-wrap: wrap; margin-top: 34px;
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem;
+      color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase;
+    }
+
+    /* Testimonials */
+    .quote-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; margin-top: 64px; }
+    .quote p {
+      font-family: 'Inter Tight', sans-serif; font-weight: 600;
+      color: var(--ink); font-size: 1.35rem; line-height: 1.35; letter-spacing: -0.015em;
+    }
+    .quote cite { display: block; margin-top: 26px; font-style: normal; font-weight: 600; color: var(--ink); font-size: 0.95rem; }
+    .quote .role { color: var(--smoke); font-size: 0.85rem; font-weight: 400; display: block; margin-top: 2px; }
 
     /* FAQ */
-    .faq-section{padding:100px 48px;border-top:1px solid var(--border);position:relative;z-index:1}
-    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
-    .faq-item{border-bottom:1px solid var(--border)}
-    .faq-item:nth-child(odd){border-right:1px solid var(--border);padding-right:40px}
-    .faq-item:nth-child(even){padding-left:40px}
-    .faq-q{width:100%;background:none;border:none;padding:24px 0;text-align:left;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;color:var(--cream);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;line-height:1.4;transition:color 0.2s}
-    .faq-q:hover{color:var(--white)}
-    .faq-q::after{content:'';display:block;width:16px;height:16px;flex-shrink:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3 6l5 5 5-5' stroke='rgba(240,238,232,0.5)' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;transition:transform 0.25s}
-    .faq-q[aria-expanded="true"]{color:var(--white)}
-    .faq-q[aria-expanded="true"]::after{transform:rotate(180deg)}
-    .faq-a{overflow:hidden;max-height:0;transition:max-height 0.3s ease,padding 0.3s ease}
-    .faq-a p{font-size:13px;color:var(--muted);line-height:1.75;padding-bottom:24px}
-    .faq-a.open{max-height:300px}
-    @media(max-width:820px){
-      .faq-section{padding:60px 20px}
-      .faq-grid{grid-template-columns:1fr}
-      .faq-item:nth-child(odd){border-right:none;padding-right:0}
-      .faq-item:nth-child(even){padding-left:0}
+    details { border-bottom: 1px solid var(--hairline); padding: 26px 0; }
+    details summary {
+      cursor: pointer; font-family: 'Inter Tight', sans-serif; font-weight: 700;
+      color: var(--ink); font-size: 1.12rem; letter-spacing: -0.015em;
+      list-style: none; position: relative; padding-right: 40px;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after {
+      content: "+"; position: absolute; right: 4px; top: -2px;
+      color: var(--accent); font-size: 1.5rem; font-weight: 400;
+    }
+    details[open] summary::after { content: "–"; }
+    details p { margin-top: 14px; font-size: 0.97rem; max-width: 820px; }
+    .faq-list { margin-top: 56px; }
+
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 72px; align-items: center; }
+    .contact-list { list-style: none; margin-top: 8px; }
+    .contact-list li { padding: 16px 0; border-bottom: 1px solid var(--hairline); font-size: 1rem; }
+    .contact-list li:first-child { padding-top: 0; }
+    .contact-list a { color: var(--ink); font-weight: 600; text-decoration: none; }
+    .contact-list a:hover { color: var(--accent); }
+    .contact-list .k {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem;
+      text-transform: uppercase; letter-spacing: 0.12em; color: var(--smoke);
+      display: block; margin-bottom: 3px;
     }
 
-    @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-    .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
-    .fade-in.visible{opacity:1;transform:translateY(0)}
+    /* Footer */
+    footer { border-top: 1px solid var(--hairline); padding: 72px 0 48px; }
+    .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; }
+    .foot-logo {
+      font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 1.25rem;
+      color: var(--ink); margin-bottom: 14px; letter-spacing: -0.03em;
+    }
+    .foot-logo span { color: var(--accent); }
+    footer h4 {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem;
+      text-transform: uppercase; letter-spacing: 0.14em; color: var(--smoke);
+      margin-bottom: 16px; font-weight: 500;
+    }
+    footer ul { list-style: none; }
+    footer ul li { margin-bottom: 10px; }
+    footer a { color: var(--smoke); text-decoration: none; font-size: 0.92rem; }
+    footer a:hover { color: var(--ink); }
+    footer p { color: var(--smoke); font-size: 0.9rem; }
+    .foot-copy {
+      margin-top: 56px; padding-top: 26px; border-top: 1px solid var(--hairline);
+      font-size: 0.82rem; color: #9AA1A8;
+    }
 
-    @media(max-width:900px){
-      nav{padding:16px 20px}
-      .nav-links{display:none}
-      .hero{padding:100px 20px 60px}
-      .hero-inner{grid-template-columns:1fr;gap:40px}
-      .outcomes-grid{grid-template-columns:1fr 1fr}
-      .scout-section{padding:60px 20px}
-      .scout-grid{grid-template-columns:1fr;gap:40px}
-      .scout-stats{grid-template-columns:repeat(3,1fr)}
-      .products{padding:60px 20px}
-      .products-grid{grid-template-columns:1fr}
-      .stats-grid{grid-template-columns:repeat(2,1fr);gap:24px}
-      .stats-bar{padding:40px 20px}
-      .about-section{padding:60px 20px}
-      .about-inner{grid-template-columns:1fr;gap:40px}
-      .cta-section{padding:60px 20px}
-      footer{padding:20px;flex-direction:column;gap:12px;text-align:center}
+    /* Responsive */
+    @media (max-width: 920px) {
+      section, .pull { padding: 80px 0; }
+      .hero { padding: 88px 0 0; }
+      .recon-grid, .training-grid, .about-grid, .origin-grid, .contact-grid, .quote-grid { grid-template-columns: 1fr; gap: 44px; }
+      .grid-3, .chips { grid-template-columns: 1fr 1fr; }
+      .svc-2 { grid-template-columns: 1fr; }
+      .foot-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links {
+        display: none; position: absolute; top: 72px; left: 0; right: 0;
+        background: var(--paper); flex-direction: column; padding: 24px 28px;
+        gap: 18px; align-items: flex-start; border-bottom: 1px solid var(--hairline);
+      }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: block; }
+      .exp { margin-top: 64px; }
+    }
+    @media (max-width: 560px) {
+      .grid-3, .chips, .foot-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="/" class="nav-logo">450<span>Digital</span></a>
-    <div class="nav-links">
-      <a href="#scout">Scout</a>
-      <a href="#products">Products</a>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">450<span>Digital</span></a>
+    <button class="nav-toggle" aria-label="Open menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <nav class="nav-links">
+      <a href="#agents">AI Agents</a>
+      <a href="#recon">Recon</a>
+      <a href="#foundations">Foundations</a>
+      <a href="#training">Training</a>
       <a href="#about">About</a>
-      <a href="https://scout.450digital.com/request-access" class="nav-cta">Try Scout Free</a>
-    </div>
-  </nav>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-cta" href="https://scout.450digital.com">Try Recon Free</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-left">
-        <div class="hero-eyebrow">AI Revenue Tools · B2B Sales</div>
-        <h1 class="hero-headline">
-          AI Fills the Leaks.<br/>
-          <em>Foundations</em><br/>
-          Build the Funnel.
-        </h1>
-        <p class="hero-sub">
-          18+ years of double-digit pipeline growth at Oracle, DocuSign, Sprinklr, and Alteryx — distilled into AI tools that find, engage, and convert more revenue. Built by practitioners, for teams that close.
-        </p>
-        <div class="hero-actions">
-          <a href="https://scout.450digital.com/request-access" class="btn-primary">
-            Try Scout Free
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="mailto:jeff@450digital.com" class="btn-ghost">Talk to Us</a>
-        </div>
+<main id="top">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="wrap">
+      <span class="eyebrow">AI Agents · Account Intelligence · Demand Generation</span>
+      <h1>AI agents that recover what others leave behind.</h1>
+      <p class="lead">Forgotten leads, abandoned carts, after-hours calls, slow follow-up — every business loses revenue it already earned. 450Digital's AI agents plug those gaps 24/7, backed by 18+ years of demand generation practice.</p>
+      <div class="hero-actions">
+        <a class="btn btn-ink" href="#agents">See the Agent Suite</a>
+        <a class="btn btn-quiet" href="#contact">Talk to us</a>
       </div>
-      <div class="hero-right">
-        <div class="outcomes-card">
-          <div class="outcomes-card-label">Scout — what it delivers</div>
-          <div class="outcomes-grid">
-            <div class="outcome-stat">
-              <div class="outcome-num">2–3<span>×</span></div>
-              <div class="outcome-desc">higher reply rates with personalized outreach</div>
-            </div>
-            <div class="outcome-stat">
-              <div class="outcome-num">60<span>%</span></div>
-              <div class="outcome-desc">less time spent on pre-call research per rep</div>
-            </div>
-            <div class="outcome-stat">
-              <div class="outcome-num">&lt;30<span>s</span></div>
-              <div class="outcome-desc">to full account brief, any prospect</div>
-            </div>
-            <div class="outcome-stat">
-              <div class="outcome-num">22<span>%</span></div>
-              <div class="outcome-desc">dormant trial users converted in 60 days</div>
-            </div>
-          </div>
-          <div class="outcomes-pedigree">
-            <div class="pedigree-label">Built on experience from</div>
-            <div class="pedigree-pills">
-              <span class="pedigree-pill">Oracle</span>
-              <span class="pedigree-pill">DocuSign</span>
-              <span class="pedigree-pill">Sprinklr</span>
-              <span class="pedigree-pill">Alteryx</span>
-              <span class="pedigree-pill">Genesys</span>
-            </div>
-          </div>
+      <div class="exp">
+        <span class="k">Experience from</span>
+        <span>Oracle Marketing Cloud</span>
+        <span>DocuSign</span>
+        <span>Sprinklr</span>
+        <span>Alteryx</span>
+        <span>Genesys</span>
+      </div>
+    </div>
+
+    <!-- Signature: the recovery ledger -->
+    <div class="ledger" aria-hidden="true">
+      <div class="ledger-track">
+        <span><span class="dot">●</span> <b>02:14 AM</b> inbound call answered · meeting booked</span>
+        <span><span class="dot">●</span> <b>dormant lead</b> reactivated after 94 days</span>
+        <span><span class="dot">●</span> <b>abandoned cart</b> recovered · $1,240</span>
+        <span><span class="dot">●</span> <b>new inquiry</b> answered in 6 seconds</span>
+        <span><span class="dot">●</span> <b>1-star review</b> intercepted · customer retained</span>
+        <span><span class="dot">●</span> <b>account brief</b> generated in 28 seconds</span>
+        <span><span class="dot">●</span> <b>02:14 AM</b> inbound call answered · meeting booked</span>
+        <span><span class="dot">●</span> <b>dormant lead</b> reactivated after 94 days</span>
+        <span><span class="dot">●</span> <b>abandoned cart</b> recovered · $1,240</span>
+        <span><span class="dot">●</span> <b>new inquiry</b> answered in 6 seconds</span>
+        <span><span class="dot">●</span> <b>1-star review</b> intercepted · customer retained</span>
+        <span><span class="dot">●</span> <b>account brief</b> generated in 28 seconds</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Agent Suite -->
+  <section id="agents">
+    <div class="wrap">
+      <span class="eyebrow">The 450Digital Agent Suite</span>
+      <h2 class="measure">Stop letting opportunities slip away.</h2>
+      <p class="lead" style="margin-top:22px;">Leads go dormant, carts are abandoned, follow-ups come too late, and satisfied customers never leave reviews. Each agent plugs one of those leaks — and they all run around the clock.</p>
+      <div class="grid-3">
+        <div class="tile">
+          <span class="icon">💬</span>
+          <h3>Database Reactivation</h3>
+          <p>Your team worked hard to get those leads. Wake them up with engaging two-way SMS conversations that reignite interest and grow pipeline from contacts you've already paid for.</p>
+        </div>
+        <div class="tile">
+          <span class="icon">⚡</span>
+          <h3>Speed to Lead</h3>
+          <p>Respond to new inquiries in seconds — not hours. Instant AI follow-up qualifies and converts prospects before competitors even see the lead, with a safety net when your team is stretched.</p>
+        </div>
+        <div class="tile">
+          <span class="icon">🕐</span>
+          <h3>24/7 Attendant</h3>
+          <p>Stop after-hours leads going unanswered. The attendant engages every inquiry the moment it arrives, filters unqualified prospects, and hands your team warm, ready conversations each morning.</p>
+        </div>
+        <div class="tile">
+          <span class="icon">🛒</span>
+          <h3>Abandoned Cart Recovery</h3>
+          <p>Secure sales that would otherwise be lost to the void. Smart follow-up nudges answer questions, suggest alternatives, and bring shoppers back to close the purchase.</p>
+        </div>
+        <div class="tile">
+          <span class="icon">🎙️</span>
+          <h3>AI Voice Agent</h3>
+          <p>AI handles inbound calls end to end — redirecting leads, taking information, answering questions, and booking or rearranging appointments, with seamless handoff to humans when it counts.</p>
+        </div>
+        <div class="tile">
+          <span class="icon">⭐</span>
+          <h3>Review &amp; Reputation Shield</h3>
+          <p>Automatically capture reviews from happy customers, triage unhappy ones before they post, and reply to every review without spending man-hours — building credibility on autopilot.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- STATS BAR -->
-  <div class="stats-bar fade-in">
-    <div class="stats-grid">
-      <div class="stat-item">
-        <div class="stat-num">18<span>+</span></div>
-        <div class="stat-label">Years building predictable pipeline at SaaS leaders</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">30<span>s</span></div>
-        <div class="stat-label">For Scout to fully research a prospect account with AI</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">22<span>%</span></div>
-        <div class="stat-label">Of dormant SaaS trial users converted in 60 days</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">3<span>×</span></div>
-        <div class="stat-label">AI products covering the full revenue funnel</div>
-      </div>
+  <hr class="rule" />
+
+  <!-- Pull-quote stat -->
+  <div class="pull">
+    <div class="wrap">
+      <blockquote>AI agents converted <em>22% of dormant SaaS trial users</em> in 60 days.</blockquote>
+      <cite>Real client result · database reactivation campaign</cite>
     </div>
   </div>
 
-  <!-- SCOUT SECTION -->
-  <section class="scout-section fade-in" id="scout">
-    <div class="scout-inner">
-      <div class="section-eyebrow">Flagship Product</div>
-      <h2 class="section-headline">Your reps shouldn't spend an hour<br/><em>researching before every call.</em></h2>
-      <div class="scout-grid">
+  <hr class="rule" />
+
+  <!-- Recon -->
+  <section id="recon" class="recon">
+    <div class="wrap">
+      <span class="eyebrow">Flagship Product · Recon</span>
+      <h2 class="measure">Your reps shouldn't spend an hour researching before every call.</h2>
+      <div class="recon-grid">
         <div>
-          <div class="scout-badge">Scout · Now Available</div>
-          <p class="scout-sub">Scout is an AI-powered account research tool built into Salesforce and available as a Chrome extension. In under 30 seconds, it surfaces everything a rep needs to have a relevant, personalized conversation — so more time goes to selling, not searching.</p>
-          <div class="scout-stats">
-            <div class="scout-stat">
-              <div class="scout-stat-num">60%</div>
-              <div class="scout-stat-label">less research time per rep</div>
-            </div>
-            <div class="scout-stat">
-              <div class="scout-stat-num">2–3×</div>
-              <div class="scout-stat-label">reply rate lift with personalization</div>
-            </div>
-            <div class="scout-stat">
-              <div class="scout-stat-num">&lt;30s</div>
-              <div class="scout-stat-label">full account brief, any prospect</div>
-            </div>
-          </div>
-          <ul class="scout-bullets">
+          <p class="lead" style="margin-top:24px;">Recon is an AI-powered account research tool built into Salesforce and available as a Chrome extension. In under 30 seconds it surfaces everything a rep needs for a relevant, personalized conversation — so more time goes to selling, not searching.</p>
+          <ul>
             <li>SEC filings + AI analysis of strategic priorities and risk factors</li>
             <li>Hiring signal detection — know what they're building before you call</li>
             <li>Competitive displacement angles tailored to your product</li>
             <li>1-click personalized outreach emails and multi-step cadences</li>
             <li>Works natively in Salesforce and as a standalone Chrome extension</li>
           </ul>
-          <div class="scout-cta-row">
-            <a href="https://scout.450digital.com/request-access" class="btn-primary">
-              Try Scout Free
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            <a href="mailto:jeff@450digital.com" class="btn-ghost">Get a Demo</a>
+          <div class="recon-actions">
+            <a class="btn btn-ink" href="https://scout.450digital.com">Try Recon Free</a>
+            <a class="btn btn-quiet" href="#contact">Get a demo</a>
           </div>
         </div>
         <div>
-          <div class="scout-how">
-            <div class="scout-how-title">How Scout works</div>
-            <div class="scout-step">
-              <div class="scout-step-num">1</div>
-              <div class="scout-step-content">
-                <div class="scout-step-title">Open any account</div>
-                <div class="scout-step-desc">Navigate to a Salesforce record or any company page in Chrome. Scout activates automatically.</div>
-              </div>
-            </div>
-            <div class="scout-step">
-              <div class="scout-step-num">2</div>
-              <div class="scout-step-content">
-                <div class="scout-step-title">AI builds the brief</div>
-                <div class="scout-step-desc">Scout pulls SEC filings, news, hiring data, and competitive signals — then surfaces the insights that matter for your product.</div>
-              </div>
-            </div>
-            <div class="scout-step">
-              <div class="scout-step-num">3</div>
-              <div class="scout-step-content">
-                <div class="scout-step-title">Personalized outreach, ready to send</div>
-                <div class="scout-step-desc">Get a tailored opening email and cadence built around what's actually happening at that account — not a generic template.</div>
-              </div>
-            </div>
-            <div class="scout-step">
-              <div class="scout-step-num">4</div>
-              <div class="scout-step-content">
-                <div class="scout-step-title">Ship it in under 30 seconds</div>
-                <div class="scout-step-desc">From zero to fully-researched, personalized, ready to send — before you even finish your coffee.</div>
-              </div>
-            </div>
+          <div class="steps">
+            <div class="step"><div class="step-num">01</div><div><h3>Open any account</h3><p>Navigate to a Salesforce record or any company page in Chrome. Recon activates automatically.</p></div></div>
+            <div class="step"><div class="step-num">02</div><div><h3>AI builds the brief</h3><p>Recon pulls SEC filings, news, hiring data, and competitive signals — then surfaces the insights that matter for your product.</p></div></div>
+            <div class="step"><div class="step-num">03</div><div><h3>Personalized outreach, ready to send</h3><p>A tailored opening email and cadence built around what's actually happening at that account — not a generic template.</p></div></div>
+            <div class="step"><div class="step-num">04</div><div><h3>Ship it in under 30 seconds</h3><p>From zero to fully researched, personalized, and ready to send — before you finish your coffee.</p></div></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PRODUCTS -->
-  <section class="products fade-in" id="products">
-    <div class="section-inner">
-      <div class="section-eyebrow">The 450Digital Suite</div>
-      <h2 class="section-headline">Stop Letting Opportunities<br/><em>Slip Away</em></h2>
-      <div class="products-grid">
-        <div class="product-card">
-          <span class="product-icon">💬</span>
-          <div class="product-name">SMS Agents</div>
-          <p class="product-desc">Reactivate cold databases, recover abandoned carts, and accelerate speed-to-lead with AI-powered SMS conversations running 24/7.</p>
-          <ul class="product-bullets">
-            <li>Database reactivation — wake up dormant leads at scale</li>
-            <li>Abandoned cart recovery with smart follow-up nudges</li>
-            <li>Speed-to-lead: respond to new inquiries instantly</li>
-            <li>Two-way conversational SMS that qualifies and converts</li>
-          </ul>
-          <a href="mailto:jeff@450digital.com" class="product-link">Learn more →</a>
+  <hr class="rule" />
+
+  <!-- Foundations -->
+  <section id="foundations">
+    <div class="wrap">
+      <span class="eyebrow">Demand Generation Services</span>
+      <h2 class="measure">AI fills the leaks. Foundations build the funnel.</h2>
+      <p class="lead" style="margin-top:22px;">AI agents are powerful at capturing what's slipping away — but they can only scale if your funnel is built on solid ground. 450Digital's foundational services provide the strategy, messaging, and targeting that ensure every AI-powered interaction drives measurable growth.</p>
+      <div class="chips">
+        <div class="chip"><span class="tag">Assess</span><h3>Campaign &amp; Channel Performance Assessment</h3><p>Find where budget leaks and which channels actually produce pipeline — before spending another dollar.</p></div>
+        <div class="chip"><span class="tag">Nurture</span><h3>Dynamic Nurtures &amp; Content-Routed Journeys</h3><p>Nurture streams that adapt to behavior and route prospects to the content most likely to convert them.</p></div>
+        <div class="chip"><span class="tag">Message</span><h3>Campaign Messaging Lab</h3><p>Sharpen positioning and messaging until it resonates — tested against real audience response, not opinion.</p></div>
+        <div class="chip"><span class="tag">Convert</span><h3>Tactical SDR Pack</h3><p>Ready-to-run sequences, call scripts, and objection handling that turn qualified interest into meetings.</p></div>
+        <div class="chip"><span class="tag">Add-on</span><h3>ICP &amp; Segmentation Sanity Check</h3><p>Validate that you're targeting accounts that can actually buy — and segmenting them in a way sales can use.</p></div>
+        <div class="chip"><span class="tag">Add-on</span><h3>Attribution &amp; Source-of-Truth Micro-Audit</h3><p>Reconcile the numbers so marketing, sales, and finance finally agree on what's working.</p></div>
+      </div>
+      <div class="svc-2">
+        <div class="tile">
+          <h3>Enhanced Campaign Engagement</h3>
+          <p>Custom engagements for marketing demand generation and lead management: tailored strategies to spark interest, nurture leads, and drive conversions through personalized, effective outreach.</p>
         </div>
-        <div class="product-card">
-          <span class="product-icon">🎙️</span>
-          <div class="product-name">Voice Agents</div>
-          <p class="product-desc">AI voice agents that handle inbound calls, qualify leads, answer questions, and book meetings — so your team focuses on closing.</p>
-          <ul class="product-bullets">
-            <li>Inbound lead qualification and routing</li>
-            <li>After-hours coverage — never miss an inquiry</li>
-            <li>Appointment booking and calendar integration</li>
-            <li>Seamless handoff to human reps when it counts</li>
-          </ul>
-          <a href="mailto:jeff@450digital.com" class="product-link">Learn more →</a>
+        <div class="tile">
+          <h3>Lead Scoring &amp; Analytics</h3>
+          <p>Identify and prioritize high-potential prospects by ranking leads on engagement, fit, and likelihood to convert. Behavioral and firmographic data plus predictive analytics focus sales effort where it matters — shortening cycles and lifting ROI.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section class="about-section fade-in" id="about">
-    <div class="about-inner">
-      <div class="about-left">
-        <div class="section-eyebrow">About 450Digital</div>
-        <h2 class="section-headline" style="margin-bottom:24px;">Measurable outcomes.<br/><em>Not marketing theory.</em></h2>
-        <p class="about-body">
-          450Digital was built on a single belief: <strong>pipeline growth is an engineering problem, not a creativity contest.</strong> Our work spans demand generation strategy, AI-powered outreach tooling, and sales automation — all designed to produce numbers you can put in a board deck.
-        </p>
-        <p class="about-body">
-          We combine <strong>18+ years of hands-on demand generation experience</strong> at some of the most competitive SaaS companies in the world with AI that works 24/7. The result is a practice that recovers lost pipeline, equips reps with real account intelligence, and accelerates revenue without adding headcount.
-        </p>
-        <p class="about-body">
-          Our approach isn't about chasing trends. It's about <strong>building systems that endure and convert</strong> — real-time analytics, seamless lead delivery, and tailored nurturing on a foundation that doesn't need to be rebuilt every 18 months.
-        </p>
-        <div class="about-pedigree">
-          <span class="about-pill">Oracle Marketing Cloud</span>
-          <span class="about-pill">DocuSign</span>
-          <span class="about-pill">Sprinklr</span>
-          <span class="about-pill">Alteryx</span>
-          <span class="about-pill">Genesys</span>
+  <hr class="rule" />
+
+  <!-- Training -->
+  <section id="training" class="training">
+    <div class="wrap training-grid">
+      <div>
+        <span class="eyebrow">Education</span>
+        <h2>Master demand generation — then supercharge it with AI.</h2>
+        <p class="lead" style="margin-top:22px;">The Demand Generation Foundations course teaches the core strategies and practices that fuel sustainable engagement and pipeline growth — the new standard for modern B2B marketers.</p>
+        <ul>
+          <li>Build a full-funnel demand generation strategy</li>
+          <li>Align sales and marketing for faster growth</li>
+          <li>Optimize campaigns for higher engagement, conversion, and attribution</li>
+          <li>Use analytics to prove ROI and guide investment</li>
+          <li>Individual online and group instructor-led formats available</li>
+        </ul>
+        <div class="hero-actions">
+          <a class="btn btn-ink" href="mailto:jeff@450digital.com?subject=Foundations%20Training%20Enrollment">Enroll in Foundations Training</a>
+          <a class="btn btn-quiet" href="mailto:jeff@450digital.com?subject=Team%20Training%20Inquiry">Team training</a>
+        </div>
+      </div>
+      <div class="playbook">
+        <span class="eyebrow" style="margin-bottom:14px;">Free Resource</span>
+        <h3>The Engagement Playbook Series</h3>
+        <p>A practical playbook for re-engaging your database and building conversion-focused journeys — the same frameworks used in our client engagements.</p>
+        <a class="btn btn-ink" href="mailto:jeff@450digital.com?subject=Engagement%20Playbook%20Request">Request the Playbook</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- About -->
+  <section id="about">
+    <div class="wrap">
+      <span class="eyebrow">About 450Digital</span>
+      <h2 class="measure">Measurable outcomes. Not marketing theory.</h2>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p style="margin-top:24px;">450Digital was built on a single belief: <strong>pipeline growth is an engineering problem, not a creativity contest.</strong> The work spans demand generation strategy, AI-powered outreach tooling, and sales automation — all designed to produce numbers you can put in a board deck.</p>
+          <p>The company combines <strong>decades of hands-on GTM and demand generation experience</strong> at some of the most competitive SaaS companies in the world with AI agents that work 24/7. The real culprits in B2B marketing are human ones — proving marketing's worth, arguing over what makes a lead "good," losing prospects in the shuffle — and 450Digital builds systems that solve them: leads land in the right hands at the right moment, follow-up feels seamless, and nurturing keeps the conversation alive.</p>
+          <p>The approach isn't about chasing trends. It's about <strong>building systems that endure and convert</strong> — real-time analytics, seamless lead delivery, and tailored nurturing on a foundation that doesn't need to be rebuilt every 18 months.</p>
+        </div>
+        <div class="about-stats">
+          <div class="about-stat"><div class="num">18+</div><div class="lbl">years building predictable pipeline at SaaS leaders</div></div>
+          <div class="about-stat"><div class="num">22%</div><div class="lbl">of dormant SaaS trial users converted in 60 days using AI agents</div></div>
+          <div class="about-stat"><div class="num">3×</div><div class="lbl">AI product lines covering the full revenue funnel</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The 450 -->
+  <section id="the-450" class="origin">
+    <div class="wrap">
+      <span class="eyebrow">Why "450"</span>
+      <h2>Named after a machine that demanded everything.</h2>
+      <div class="origin-grid">
+        <figure>
+          <img src="/scarlet-witch.jpg" alt="The Scarlet Witch — a hand-restored 1971 Honda CB450 café racer with a candy-red tank, photographed in a workshop" loading="lazy" />
+          <figcaption>The Scarlet Witch · 1971 Honda CB450 · BikeBound Top 10 Café Racers of 2020</figcaption>
+        </figure>
+        <div class="origin-copy">
+          <p>The "450" in 450Digital is a <strong>1971 Honda CB450</strong> — a complete frame-up restoration that took two and a half years of wrestling with every nut, bolt, and stubborn detail until each one was exactly right.</p>
+          <p>The result was the <strong>"Scarlet Witch,"</strong> a sleek café racer that earned a spot on BikeBound's Top 10 Café Racers of 2020 and a showcase at The Handbuilt Show in Austin, Texas.</p>
+          <p>That build is the company's standard, not its mascot: <strong>patience, grit, and the conviction that details done right compound into something that wins.</strong> The same discipline runs through every 450Digital engagement — decades of demand generation, marketing operations, branding, and Six Sigma practice applied until the machine runs the way it should.</p>
+          <div class="origin-specs">
+            <span>2.5 yr frame-up build</span>
+            <span>BikeBound Top 10 · 2020</span>
+            <span>The Handbuilt Show · Austin</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">What Partners Say</span>
+      <h2 class="measure">Trusted by revenue leaders.</h2>
+      <div class="quote-grid">
+        <div class="quote">
+          <p>"An exceptional demand gen and digital marketing practice. High-impact campaigns, driving measurable growth with data-driven insights and creative execution."</p>
+          <cite>Nicole Granucci <span class="role">Vice President Product Marketing, Alteryx</span></cite>
+        </div>
+        <div class="quote">
+          <p>"For companies seeking visionary marketing leadership, 450Digital is a game-changer. Working with this team isn't just smart — it's a strategic edge."</p>
+          <cite>Morgan Kirkland <span class="role">Global Vice President, Sales Development</span></cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="measure">Everything you need to know.</h2>
+      <div class="faq-list">
+        <details>
+          <summary>What does 450Digital do?</summary>
+          <p>450Digital builds AI-powered revenue tools for B2B teams. The flagship product, Recon, gives reps instant account intelligence — financials, hiring signals, competitive context, and personalized outreach — in under 30 seconds. The Agent Suite covers SMS and voice agents that reactivate dormant pipeline, recover abandoned carts, answer after-hours inquiries, and protect your reputation. Foundational demand generation services and training tie it all together.</p>
+        </details>
+        <details>
+          <summary>What is Recon and how does it work?</summary>
+          <p>Recon is an AI account research tool that works as a Chrome extension and integrates natively with Salesforce. When a rep opens any prospect account, Recon automatically pulls SEC filings, recent news, hiring trends, and competitive signals — then surfaces the insights most relevant to your product, along with a personalized outreach email and multi-step cadence. The full brief is ready in under 30 seconds.</p>
+        </details>
+        <details>
+          <summary>How much does personalized outreach improve reply rates?</summary>
+          <p>Personalized outreach based on real account intelligence consistently achieves 2–3× higher reply rates than generic templated messaging. The difference is relevance — when a rep references a buyer's actual strategic priorities, recent announcements, or hiring signals, the message stands out. Recon automates the research required to make every message that specific.</p>
+        </details>
+        <details>
+          <summary>Do the AI agents replace my sales team?</summary>
+          <p>No — they handle the work your team would "never get around to doing": reviving old databases, answering at 2 AM, chasing abandoned carts, replying to reviews. Every agent hands warm, qualified conversations to humans at the right moment, so reps spend their time closing rather than chasing.</p>
+        </details>
+        <details>
+          <summary>What if our funnel fundamentals aren't in place yet?</summary>
+          <p>That's exactly what the Foundations services are for. Assessments, messaging work, nurture design, and attribution audits get the strategy right so AI has something solid to amplify — and the Demand Generation Foundations training brings your team along.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <span class="eyebrow">Contact</span>
+        <h2>Ready to recover what you're leaving behind?</h2>
+        <p class="lead" style="margin-top:22px;">Tell us where revenue is leaking — dormant lists, slow follow-up, missed calls — and we'll show you what an agent can recover. No setup required to try Recon.</p>
+        <div class="hero-actions" style="margin-top:36px;">
+          <a class="btn btn-ink" href="mailto:jeff@450digital.com?subject=450Digital%20Inquiry">Get started</a>
+          <a class="btn btn-quiet" href="https://scout.450digital.com">Try Recon free</a>
         </div>
       </div>
       <div>
-        <div class="testimonial-stack">
-          <div class="stat-highlight" style="margin-bottom:16px;">
-            <div class="stat-highlight-num">22%</div>
-            <div class="stat-highlight-label">Of dormant SaaS trial users converted in 60 days using AI agents</div>
-          </div>
-          <div class="testimonial-card">
-            <p class="testimonial-quote">
-              Jeff is an exceptional demand gen and digital marketing expert. He delivered high-impact campaigns, driving measurable growth with data-driven insights and creative execution — a strategic thinker and a fantastic collaborator.
-            </p>
-            <div class="testimonial-name">Nicole Granucci</div>
-            <div class="testimonial-role">Vice President Product Marketing, Alteryx</div>
-          </div>
-          <div class="testimonial-card">
-            <p class="testimonial-quote">
-              For companies seeking visionary marketing leadership, 450Digital is a game-changer. Working with this team isn't just smart — it's a strategic edge.
-            </p>
-            <div class="testimonial-name">Morgan Kirkland</div>
-            <div class="testimonial-role">Global Vice President, Sales Development</div>
-          </div>
-        </div>
+        <ul class="contact-list">
+          <li><span class="k">Email</span><a href="mailto:jeff@450digital.com">jeff@450digital.com</a></li>
+          <li><span class="k">Phone</span><a href="tel:+15128100049">512-810-0049</a></li>
+          <li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/company/450digital" rel="noopener">450Digital on LinkedIn</a></li>
+          <li><span class="k">Office</span>450 Digital, LLC · 5900 Balcones Drive, Suite 26681 · Austin, TX 78731</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="faq-section fade-in" id="faq">
-    <div class="section-inner">
-      <div class="section-eyebrow">Frequently Asked Questions</div>
-      <h2 class="section-headline" style="margin-bottom:48px;">Everything you need<br/><em>to know</em></h2>
-      <div class="faq-grid">
+</main>
 
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">What does 450Digital do?</button>
-          <div class="faq-a">
-            <p>450Digital builds AI-powered revenue tools for B2B sales teams. Our flagship product, Scout, gives reps instant account intelligence — financials, hiring signals, competitive context, and personalized outreach — in under 30 seconds. We also offer SMS and voice agents that reactivate dormant pipeline and handle inbound lead qualification around the clock.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">What is Scout and how does it work?</button>
-          <div class="faq-a">
-            <p>Scout is an AI account research tool that works as a Chrome extension and integrates natively with Salesforce. When a rep opens any prospect account, Scout automatically pulls SEC filings, recent news, hiring trends, and competitive signals — then surfaces the insights most relevant to your product. It also generates a personalized outreach email and multi-step cadence tailored to that account's current priorities. The full brief is ready in under 30 seconds.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">How much does personalized outreach improve reply rates?</button>
-          <div class="faq-a">
-            <p>Personalized outreach based on real account intelligence consistently achieves 2–3× higher reply rates than generic templated messaging. The difference comes from relevance — when a rep references a buyer's actual strategic priorities, recent announcements, or hiring signals, the message stands out. Scout automates the research required to make every outreach feel bespoke, at scale.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">How much time does Scout save per rep?</button>
-          <div class="faq-a">
-            <p>Reps who manually research accounts typically spend 45–60 minutes per prospect gathering context from LinkedIn, news, SEC filings, and company websites. Scout compresses that to under 30 seconds. Teams using Scout report an average 60% reduction in pre-call research time — time that goes back into selling, following up, and closing.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Does Scout work with Salesforce?</button>
-          <div class="faq-a">
-            <p>Yes. Scout is built to work inside Salesforce — reps can access full account briefs without leaving their CRM. It also runs as a standalone Chrome extension for use on LinkedIn, company websites, or anywhere reps are doing research. No tab switching, no copy-pasting between tools.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">What data sources does Scout use?</button>
-          <div class="faq-a">
-            <p>Scout pulls from SEC EDGAR filings (10-K, 10-Q, 8-K), real-time news and press releases, public hiring data and job postings, and company web presence. It then applies AI to surface the signals most relevant to your product — strategic priorities, risk factors, capability gaps, and expansion signals — rather than just dumping raw data.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">What are the SMS and voice agents used for?</button>
-          <div class="faq-a">
-            <p>The SMS agents handle database reactivation (re-engaging dormant leads at scale), abandoned cart recovery, and speed-to-lead follow-up for new inbound inquiries. The voice agents manage inbound calls — qualifying leads, answering common questions, and booking meetings — so your team focuses on high-value conversations. Both run 24/7 without adding headcount.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">How do I get access to Scout?</button>
-          <div class="faq-a">
-            <p>Scout is currently available by request. Click "Try Scout Free" on this page to submit a request — we'll reach out within one business day to get you set up. There's no long contract or complicated onboarding. Most teams are running live account research on day one.</p>
-          </div>
-        </div>
-
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">450<span>Digital</span></div>
+        <p>AI agents and demand generation foundations for B2B revenue teams. Built by practitioners, for teams that close.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#agents">AI Agent Suite</a></li>
+          <li><a href="#recon">Recon</a></li>
+          <li><a href="#foundations">Demand Gen Services</a></li>
+          <li><a href="#training">Training</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="mailto:jeff@450digital.com">jeff@450digital.com</a></li>
+          <li><a href="tel:+15128100049">512-810-0049</a></li>
+          <li><a href="https://www.linkedin.com/company/450digital" rel="noopener">LinkedIn</a></li>
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+        </ul>
+        <p style="margin-top:16px;">450 Digital, LLC<br/>5900 Balcones Drive, Suite 26681<br/>Austin, TX 78731</p>
       </div>
     </div>
-  </section>
+    <div class="foot-copy">© 2026 450 Digital, LLC. All rights reserved.</div>
+  </div>
+</footer>
 
-  <!-- CTA -->
-  <section class="cta-section fade-in">
-    <h2 class="cta-headline">Ready to stop losing deals<br/>you already paid for?</h2>
-    <p class="cta-sub">Start with Scout — research any account in 30 seconds, free.</p>
-    <div class="cta-actions">
-      <a href="https://scout.450digital.com/request-access" class="btn-primary">Try Scout Free →</a>
-      <a href="mailto:jeff@450digital.com" class="btn-ghost">Talk to Us</a>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-brand">450Digital</div>
-    <div class="footer-links">
-      <a href="https://scout.450digital.com/request-access">Scout</a>
-      <a href="mailto:jeff@450digital.com">jeff@450digital.com</a>
-      <a href="tel:5128100049">512-810-0049</a>
-      <a href="https://www.linkedin.com/in/JeffMassamillo">LinkedIn</a>
-    </div>
-    <div class="footer-copy">© 2026 450 Digital, LLC · Austin, TX</div>
-  </footer>
-
-  <script>
-    // FAQ accordion
-    document.querySelectorAll('.faq-q').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const answer = btn.nextElementSibling;
-        const isOpen = btn.getAttribute('aria-expanded') === 'true';
-        document.querySelectorAll('.faq-q').forEach(b => {
-          b.setAttribute('aria-expanded','false');
-          b.nextElementSibling.classList.remove('open');
-        });
-        if(!isOpen){
-          btn.setAttribute('aria-expanded','true');
-          answer.classList.add('open');
-        }
-      });
-    });
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  </script>
 </body>
 </html>
