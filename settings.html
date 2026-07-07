@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings — Recon</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    /* ── Settings-specific styles ── */
+    .settings-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .org-selector-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-bottom: 24px;
+    }
+
+    .org-selector-bar label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .org-selector-bar select {
+      flex: 1;
+      height: 36px;
+      padding: 0 10px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 13px;
+      color: var(--text);
+      background: var(--white);
+    }
+
+    /* Product lines table */
+    .pl-row-actions { display: flex; gap: 6px; white-space: nowrap; }
+
+    /* Inline AI panel — appears below the product lines card */
+    .ai-panel {
+      border: 2px solid var(--navy);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+      background: #F8F8FF;
+      display: none;
+    }
+
+    .ai-panel.visible { display: block; }
+
+    .ai-panel-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .ai-panel-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .guidance-box {
+      background: #EEEEFF;
+      border: 1px solid #C5BEFF;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      display: none;
+    }
+
+    .guidance-box.visible { display: block; }
+
+    .guidance-box textarea {
+      width: 100%;
+      height: 72px;
+      padding: 8px 10px;
+      border: 1px solid #C5BEFF;
+      border-radius: 6px;
+      font-size: 12px;
+      font-family: inherit;
+      resize: vertical;
+      background: white;
+    }
+
+    .guidance-box label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #3C3489;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    /* Preview editor */
+    .preview-panel {
+      border: 2px solid var(--teal);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+      background: #F8FFFD;
+      display: none;
+    }
+
+    .preview-panel.visible { display: block; }
+
+    .preview-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .preview-section { margin-bottom: 20px; }
+
+    .preview-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .preview-item {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 8px;
+      background: var(--white);
+      transition: opacity 0.2s;
+    }
+
+    .preview-item.excluded { opacity: 0.4; }
+
+    .preview-item-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .preview-item-header input[type="checkbox"] {
+      width: 15px; height: 15px; cursor: pointer; flex-shrink: 0;
+    }
+
+    .preview-item-title { font-size: 12px; font-weight: 600; flex: 1; color: var(--navy); }
+
+    .preview-field { margin-bottom: 6px; }
+
+    .preview-field label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .preview-field input,
+    .preview-field textarea,
+    .preview-field select {
+      width: 100%;
+      padding: 5px 8px;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      font-size: 12px;
+      color: var(--text);
+      font-family: inherit;
+      background: var(--white);
+    }
+
+    .preview-field textarea { height: 54px; resize: vertical; }
+
+    /* KB tabs */
+    .kb-section { display: none; }
+    .kb-section.active { display: block; }
+
+    .tab-bar {
+      display: flex;
+      gap: 2px;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      padding: 8px 16px;
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.15s;
+    }
+
+    .tab-btn.active { color: var(--navy); border-bottom-color: var(--orange); }
+    .tab-btn:hover:not(.active) { color: var(--navy); }
+
+    /* Spinner */
+    .ai-spinner {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .ai-spinner .spinner {
+      width: 16px; height: 16px;
+      border: 2px solid var(--border);
+      border-top-color: var(--navy);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="dash-wrap">
+
+    <!-- Sidebar with nested Settings -->
+    <div class="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-mark">R</div>
+        <div class="logo-text">Recon</div>
+      </div>
+      <a class="nav-item" href="dashboard.html">Overview</a>
+      <a class="nav-item" href="customers.html">Customers</a>
+      <div class="nav-item has-children open">Settings</div>
+      <div class="nav-children open" id="settings-nav">
+        <a class="nav-child active" href="settings.html">Knowledge Base</a>
+        <a class="nav-child" href="users.html">Users</a>
+        <a class="nav-child" href="usage.html">Usage</a>
+      </div>
+      <div class="nav-spacer"></div>
+      <a class="nav-item" href="#" onclick="signOut()">Sign out</a>
+    </div>
+
+    <div class="main-content">
+      <div class="settings-header">
+        <div class="page-title" style="margin:0">Knowledge Base</div>
+      </div>
+
+      <!-- Step 1: Org selector -->
+      <div class="org-selector-bar">
+        <label>Organization</label>
+        <select id="org-select" onchange="onOrgChange()">
+          <option value="">Select organization...</option>
+        </select>
+      </div>
+
+      <!-- Company Profile (appears after org selected) -->
+      <div id="company-profile-section" style="display:none;">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <div class="card-title" style="margin:0">Company profile</div>
+            <button class="btn-sm" onclick="aiSetupProfile()">&#10022; AI Setup from website</button>
+          </div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:14px;">Tell Recon about <em>your</em> company. Every research is analyzed through this lens — what you sell, the value you drive, and who you sell to.</div>
+          <div class="form-group"><label class="form-label">Company website</label><input class="form-input" id="cp-website" placeholder="https://yourcompany.com" /></div>
+          <div class="form-group"><label class="form-label">What we do (description)</label><textarea class="form-input" id="cp-desc" style="height:70px;" placeholder="One or two sentences on what your company sells and to whom"></textarea></div>
+          <div class="form-group"><label class="form-label">Research lens / solution domain</label><textarea class="form-input" id="cp-domain" style="height:60px;" placeholder="The business areas Recon should look for in target companies, e.g. supply chain visibility, security operations, employee communications"></textarea></div>
+          <div class="form-group"><label class="form-label">Value drivers (comma separated)</label><input class="form-input" id="cp-drivers" placeholder="e.g. reduce operating cost, faster onboarding, measurable adoption" /></div>
+          <div class="form-group"><label class="form-label">Target personas (comma separated)</label><input class="form-input" id="cp-personas" placeholder="e.g. VP Operations, CISO, Head of Internal Comms" /></div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <button class="btn-sm" onclick="saveCompanyProfile()">Save profile</button>
+            <span id="cp-msg" style="font-size:12px;"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Product lines (appears after org selected) -->
+      <div id="product-lines-section" style="display:none;">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <div class="card-title" style="margin:0">Product lines</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-sm primary" onclick="startAIDiscovery()">✦ Discover with AI</button>
+              <button class="btn-sm" onclick="showAddProductLineForm()">+ Add manually</button>
+            </div>
+          </div>
+          <div id="product-lines-list" class="empty-state">No product lines yet</div>
+
+          <!-- Add/edit product line form (inline) -->
+          <div id="pl-form" style="display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);">
+            <input type="hidden" id="pl-id" />
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+              <div class="form-group" style="margin:0">
+                <label class="form-label">Name</label>
+                <input class="form-input" id="pl-name" placeholder="e.g. Sales Cloud" />
+              </div>
+              <div class="form-group" style="margin:0">
+                <label class="form-label">Category</label>
+                <input class="form-input" id="pl-category" placeholder="e.g. CRM, ERP, HCM" />
+              </div>
+              <div class="form-group" style="margin:0">
+                <label class="form-label">Website</label>
+                <input class="form-input" id="pl-website" placeholder="e.g. salesforce.com/sales" />
+              </div>
+              <div class="form-group" style="margin:0">
+                <label class="form-label">Description</label>
+                <input class="form-input" id="pl-desc" placeholder="Brief description" />
+              </div>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-sm primary" onclick="saveProductLine()">Save</button>
+              <button class="btn-sm" onclick="hideProductLineForm()">Cancel</button>
+            </div>
+            <div id="pl-msg" style="margin-top:8px;font-size:12px;"></div>
+          </div>
+        </div>
+
+        <!-- Step 3: AI Discovery panel (appears below product lines) -->
+        <div class="ai-panel" id="ai-discovery-panel">
+          <div class="ai-panel-title">✦ AI Product Discovery</div>
+          <div class="ai-panel-sub">Claude will identify all product lines for this company. Select the ones you want to set up.</div>
+          <div class="form-group">
+            <label class="form-label">Company name</label>
+            <input class="form-input" id="discovery-company" placeholder="e.g. Salesforce, Oracle, SAP" />
+          </div>
+          <div style="display:flex;gap:8px;margin-bottom:12px;">
+            <button class="btn-sm primary" onclick="runDiscovery()">Discover ✦</button>
+            <button class="btn-sm" onclick="hideAIDiscovery()">Cancel</button>
+          </div>
+          <div id="discovery-status" style="font-size:12px;color:var(--muted);"></div>
+          <div id="discovery-results" style="display:none;margin-top:14px;">
+            <div style="font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;">Select product lines to create</div>
+            <div id="discovery-list"></div>
+            <div style="display:flex;gap:8px;margin-top:12px;">
+              <button class="btn-sm primary" onclick="createDiscoveredLines()">Create selected</button>
+              <button class="btn-sm" onclick="document.getElementById('discovery-results').style.display='none'">Back</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: AI Populate panel (appears after clicking ✦ AI on a product line) -->
+        <div class="ai-panel" id="ai-populate-panel">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <div class="ai-panel-title">✦ AI Populate — <span id="ai-populate-pl-name"></span></div>
+            <button class="btn-sm" onclick="hideAIPopulate()">Cancel</button>
+          </div>
+          <div class="ai-panel-sub">Claude will research this product and suggest capabilities, stories, competitive intel, and ICP settings.</div>
+
+          <div class="guidance-box" id="guidance-box">
+            <label>Research guidance (optional)</label>
+            <textarea id="ai-guidance" placeholder="e.g. Focus on frontline workers, retail and manufacturing. Key competitors: Staffbase, SharePoint. Target 5,000+ employee companies."></textarea>
+          </div>
+
+          <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;">
+            <button class="btn-sm primary" onclick="runAIPopulate()">Generate ✦</button>
+            <button class="btn-sm" onclick="toggleGuidance()" id="guidance-toggle-btn">+ Add guidance</button>
+          </div>
+          <div id="ai-populate-status" style="font-size:12px;color:var(--muted);"></div>
+        </div>
+
+        <!-- Step 5: Preview/editor (appears directly below populate panel) -->
+        <div class="preview-panel" id="preview-panel">
+          <div class="preview-panel-header">
+            <div>
+              <div style="font-size:14px;font-weight:700;color:#007A62;">✦ Review & Edit Suggestions</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:2px;">Edit any field · uncheck to exclude · remove items · add new ones</div>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-sm primary" onclick="saveSelectedSuggestions()">Save selected</button>
+              <button class="btn-sm" onclick="hidePreview()">Discard</button>
+            </div>
+          </div>
+          <div id="preview-content"></div>
+        </div>
+
+        <!-- Step 6: KB tabs (appears after selecting a product line to manage) -->
+        <div id="kb-section" style="display:none;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+            <div style="font-size:16px;font-weight:700;color:var(--navy);">
+              <span id="kb-pl-name"></span>
+              <span style="font-size:12px;font-weight:400;color:var(--muted);margin-left:8px;">Knowledge Base</span>
+            </div>
+            <button class="btn-sm" onclick="closeKBSection()">← Back to product lines</button>
+          </div>
+
+          <div class="tab-bar">
+            <button class="tab-btn active" onclick="switchTab('capabilities', this)">Products &amp; Services</button>
+            <button class="tab-btn" onclick="switchTab('stories', this)">Customer Stories</button>
+            <button class="tab-btn" onclick="switchTab('competitive', this)">Competitive Intel</button>
+            <button class="tab-btn" onclick="switchTab('icp', this)">ICP Settings</button>
+          </div>
+
+          <!-- Capabilities -->
+          <div id="tab-capabilities" class="kb-section active">
+            <div class="card">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                <div class="card-title" style="margin:0">Products &amp; Services</div>
+                <button class="btn-sm primary" onclick="showAddCapability()">+ Add</button>
+              </div>
+              <div id="capabilities-list" class="empty-state">No capabilities yet</div>
+            </div>
+            <div class="card" id="cap-form" style="display:none;">
+              <div class="card-title" id="cap-form-title">Add capability</div>
+              <input type="hidden" id="cap-id" />
+              <div class="form-group"><label class="form-label">Name</label><input class="form-input" id="cap-name" placeholder="e.g. Employee App" /></div>
+              <div class="form-group"><label class="form-label">Type</label><select class="form-input" id="cap-category"><option value="product">Product</option><option value="service">Service</option></select></div>
+              <div class="form-group"><label class="form-label">Description</label><textarea class="form-input" id="cap-desc" style="height:80px;" placeholder="What does this do?"></textarea></div>
+              <div class="form-group"><label class="form-label">Problems it solves</label><textarea class="form-input" id="cap-problems" style="height:70px;" placeholder="The business problems this addresses"></textarea></div>
+              <div class="form-group"><label class="form-label">Key differentiators</label><textarea class="form-input" id="cap-diff" style="height:70px;" placeholder="Why customers pick this over alternatives"></textarea></div>
+              <div class="form-group"><label class="form-label">Keywords (comma separated)</label><input class="form-input" id="cap-keywords" placeholder="frontline, mobile, deskless" /></div>
+              <div class="form-group"><label class="form-label">Use cases (comma separated)</label><input class="form-input" id="cap-usecases" placeholder="Reaching frontline workers, Retail comms" /></div>
+              <div style="display:flex;gap:8px;"><button class="btn-sm primary" onclick="saveCapability()">Save</button><button class="btn-sm" onclick="hideCap()">Cancel</button></div>
+              <div id="cap-msg" style="margin-top:8px;font-size:12px;"></div>
+            </div>
+          </div>
+
+          <!-- Stories -->
+          <div id="tab-stories" class="kb-section">
+            <div class="card">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                <div class="card-title" style="margin:0">Customer Stories</div>
+                <button class="btn-sm primary" onclick="showAddStory()">+ Add</button>
+              </div>
+              <div id="stories-list" class="empty-state">No stories yet</div>
+            </div>
+            <div class="card" id="story-form" style="display:none;">
+              <div class="card-title" id="story-form-title">Add story</div>
+              <input type="hidden" id="story-id" />
+              <div class="form-group"><label class="form-label">Company</label><input class="form-input" id="story-company" placeholder="e.g. Walmart" /></div>
+              <div class="form-group"><label class="form-label">Industry</label><input class="form-input" id="story-industry" placeholder="e.g. Retail" /></div>
+              <div class="form-group"><label class="form-label">Employees</label><input class="form-input" id="story-employees" placeholder="e.g. 400,000+" /></div>
+              <div class="form-group"><label class="form-label">Outcome</label><textarea class="form-input" id="story-outcome" style="height:80px;" placeholder="What result did they achieve?"></textarea></div>
+              <div class="form-group"><label class="form-label">Keywords (comma separated)</label><input class="form-input" id="story-keywords" placeholder="retail, frontline, mobile" /></div>
+              <div style="display:flex;gap:8px;"><button class="btn-sm primary" onclick="saveStory()">Save</button><button class="btn-sm" onclick="hideStory()">Cancel</button></div>
+              <div id="story-msg" style="margin-top:8px;font-size:12px;"></div>
+            </div>
+          </div>
+
+          <!-- Competitive -->
+          <div id="tab-competitive" class="kb-section">
+            <div class="card">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                <div class="card-title" style="margin:0">Competitive Intel</div>
+                <button class="btn-sm primary" onclick="showAddCompetitor()">+ Add</button>
+              </div>
+              <div id="competitive-list" class="empty-state">No competitors yet</div>
+            </div>
+            <div class="card" id="comp-form" style="display:none;">
+              <div class="card-title" id="comp-form-title">Add competitor</div>
+              <input type="hidden" id="comp-id" />
+              <div class="form-group"><label class="form-label">Competitor name</label><input class="form-input" id="comp-name" placeholder="e.g. Staffbase" /></div>
+              <div class="form-group"><label class="form-label">Status</label><select class="form-input" id="comp-status"><option value="active">Active</option><option value="sunsetting">Sunsetting</option><option value="legacy">Legacy</option></select></div>
+              <div class="form-group"><label class="form-label">Displacement angle</label><textarea class="form-input" id="comp-angle" style="height:80px;" placeholder="Why do customers switch to your product?"></textarea></div>
+              <div class="form-group"><label class="form-label">Keywords (comma separated)</label><input class="form-input" id="comp-keywords" placeholder="intranet, comms, employee app" /></div>
+              <div style="display:flex;gap:8px;"><button class="btn-sm primary" onclick="saveCompetitor()">Save</button><button class="btn-sm" onclick="hideComp()">Cancel</button></div>
+              <div id="comp-msg" style="margin-top:8px;font-size:12px;"></div>
+            </div>
+          </div>
+
+          <!-- ICP -->
+          <div id="tab-icp" class="kb-section">
+            <div class="card">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                <div class="card-title" style="margin:0">ICP Settings</div>
+                <button class="btn-sm primary" onclick="showAddICP()">+ Add tier</button>
+              </div>
+              <div id="icp-list" class="empty-state">No ICP tiers yet</div>
+            </div>
+            <div class="card" id="icp-form" style="display:none;">
+              <div class="card-title" id="icp-form-title">Add ICP tier</div>
+              <input type="hidden" id="icp-id" />
+              <div class="form-group"><label class="form-label">Tier</label><select class="form-input" id="icp-tier"><option value="primary">Primary ICP</option><option value="secondary">Secondary ICP</option><option value="non">Non-ICP</option></select></div>
+              <div class="form-group"><label class="form-label">Min employees</label><input class="form-input" id="icp-employees" type="number" placeholder="e.g. 5000" /></div>
+              <div class="form-group"><label class="form-label">Industries (comma separated)</label><input class="form-input" id="icp-industries" placeholder="retail, healthcare, manufacturing" /></div>
+              <div class="form-group"><label class="form-label">Geographies (comma separated)</label><input class="form-input" id="icp-geos" placeholder="United States, Canada, UK" /></div>
+              <div style="display:flex;gap:8px;"><button class="btn-sm primary" onclick="saveICP()">Save</button><button class="btn-sm" onclick="hideICP()">Cancel</button></div>
+              <div id="icp-msg" style="margin-top:8px;font-size:12px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="settings.js"></script>
+  <script>
+    let initAttempts = 0;
+    function tryInit() {
+      if (typeof supabaseClient !== 'undefined' && supabaseClient && typeof initSettings !== 'undefined') {
+        initSettings();
+      } else if (initAttempts < 30) {
+        initAttempts++;
+        setTimeout(tryInit, 100);
+      }
+    }
+    tryInit();
+  </script>
+</body>
+</html>

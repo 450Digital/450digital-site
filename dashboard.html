@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recon Admin — 450digital</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="dash-wrap">
+    <div class="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-mark">R</div>
+        <div class="logo-text">Recon</div>
+      </div>
+      <a class="nav-item active" href="dashboard.html">Overview</a>
+      <a class="nav-item" href="customers.html">Customers</a>
+      <div class="nav-item has-children">Settings</div>
+      <div class="nav-children open">
+        <a class="nav-child" href="settings.html">Knowledge Base</a>
+        <a class="nav-child" href="users.html">Users</a>
+        <a class="nav-child" href="usage.html">Usage</a>
+      </div>
+      <div class="nav-spacer"></div>
+      <a class="nav-item" href="#" onclick="signOut()">Sign out</a>
+    </div>
+    <div class="main-content">
+      <div class="page-title">Overview</div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total customers</div>
+          <div class="stat-value" id="stat-customers">—</div>
+          <div class="stat-sub">organizations</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Active users</div>
+          <div class="stat-value" id="stat-users">—</div>
+          <div class="stat-sub">across all orgs</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Lookups today</div>
+          <div class="stat-value" id="stat-lookups">—</div>
+          <div class="stat-sub">account researches</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">MRR</div>
+          <div class="stat-value" id="stat-mrr">—</div>
+          <div class="stat-sub">monthly recurring</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Customers</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Organization</th>
+              <th>Plan</th>
+              <th>Seats</th>
+              <th>Status</th>
+              <th>Created</th>
+            </tr>
+          </thead>
+          <tbody id="customers-table">
+            <tr><td colspan="5" class="empty-state">Loading...</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:16px;">
+          <button class="btn-sm primary" onclick="showAddCustomer()">+ Add customer</button>
+        </div>
+      </div>
+      <div class="card" id="add-customer-form" style="display:none;">
+        <div class="card-title">Add new customer</div>
+        <div class="form-group">
+          <label class="form-label">Company name</label>
+          <input class="form-input" id="new-org-name" placeholder="Acme Corp" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Slug</label>
+          <input class="form-input" id="new-org-slug" placeholder="acme-corp" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Plan</label>
+          <select class="form-input" id="new-org-plan">
+            <option value="trial">Trial</option>
+            <option value="starter">Starter ($495/mo)</option>
+            <option value="growth">Growth ($990/mo)</option>
+            <option value="enterprise">Enterprise (custom)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Seats</label>
+          <input class="form-input" id="new-org-seats" type="number" value="5" min="1" />
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button class="btn-sm primary" onclick="addCustomer()">Create customer</button>
+          <button class="btn-sm" onclick="hideAddCustomer()">Cancel</button>
+        </div>
+        <div id="form-message" style="margin-top:12px;font-size:12px;"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Recent lookups</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Company researched</th>
+              <th>User</th>
+              <th>Organization</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody id="usage-table">
+            <tr><td colspan="4" class="empty-state">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

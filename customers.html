@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customers — Recon</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    .action-btns { display: flex; gap: 6px; flex-wrap: nowrap; }
+    .badge-inactive { background: #F0F0F0; color: #888; font-size: 11px; padding: 2px 8px; border-radius: 10px; font-weight: 500; }
+    .badge-active { background: #E6F7F2; color: #007A62; font-size: 11px; padding: 2px 8px; border-radius: 10px; font-weight: 500; }
+    .badge-trial { background: #FFF3E0; color: #E65100; font-size: 11px; padding: 2px 8px; border-radius: 10px; font-weight: 500; }
+    .row-inactive td { opacity: 0.5; }
+    .row-inactive td:last-child { opacity: 1; }
+    .delete-confirm {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+      display: flex; align-items: center; justify-content: center; z-index: 100;
+    }
+    .delete-confirm-card {
+      background: #fff; border-radius: 12px; padding: 28px; max-width: 400px;
+      width: 90%; box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+    .delete-confirm-title { font-size: 16px; font-weight: 700; color: #C0320F; margin-bottom: 8px; }
+    .delete-confirm-body { font-size: 13px; color: var(--muted); margin-bottom: 20px; line-height: 1.6; }
+    .delete-confirm-actions { display: flex; gap: 8px; }
+  </style>
+</head>
+<body>
+  <div class="dash-wrap">
+    <div class="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-mark">R</div>
+        <div class="logo-text">Recon</div>
+      </div>
+      <a class="nav-item" href="dashboard.html">Overview</a>
+      <a class="nav-item active" href="customers.html">Customers</a>
+      <div class="nav-item has-children">Settings</div>
+      <div class="nav-children open">
+        <a class="nav-child" href="settings.html">Knowledge Base</a>
+        <a class="nav-child" href="users.html">Users</a>
+        <a class="nav-child" href="usage.html">Usage</a>
+      </div>
+      <div class="nav-spacer"></div>
+      <a class="nav-item" href="#" onclick="signOut()">Sign out</a>
+    </div>
+
+    <div class="main-content">
+      <div class="page-title">Customers</div>
+
+      <!-- Stats -->
+      <div class="stats-grid" style="margin-bottom:24px;">
+        <div class="stat-card">
+          <div class="stat-label">Active customers</div>
+          <div class="stat-value" id="stat-active">—</div>
+          <div class="stat-sub">organizations</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Inactive</div>
+          <div class="stat-value" id="stat-inactive">—</div>
+          <div class="stat-sub">deactivated</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total seats</div>
+          <div class="stat-value" id="stat-seats">—</div>
+          <div class="stat-sub">across active orgs</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">MRR</div>
+          <div class="stat-value" id="stat-mrr">—</div>
+          <div class="stat-sub">est. monthly recurring</div>
+        </div>
+      </div>
+
+      <!-- Customers table -->
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+          <div class="card-title" style="margin:0">All organizations</div>
+          <button class="btn-sm primary" onclick="showAddCustomer()">+ Add customer</button>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Organization</th>
+              <th>Plan</th>
+              <th>Seats</th>
+              <th>Status</th>
+              <th>Created</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="customers-table">
+            <tr><td colspan="6" class="empty-state">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Add / Edit form -->
+      <div class="card" id="customer-form-card" style="display:none;">
+        <div class="card-title" id="customer-form-title">Add new customer</div>
+        <input type="hidden" id="edit-org-id" />
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="form-group">
+            <label class="form-label">Company name</label>
+            <input class="form-input" id="new-org-name" placeholder="Acme Corp" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Slug</label>
+            <input class="form-input" id="new-org-slug" placeholder="acme-corp" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Brand name (shown in extension)</label>
+            <input class="form-input" id="new-org-brand" placeholder="Acme" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Brand color</label>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <input type="color" id="new-org-color" value="#1B1F5E"
+                style="width:40px;height:36px;border:1px solid var(--border);border-radius:6px;cursor:pointer;padding:2px;" />
+              <input class="form-input" id="new-org-color-hex" placeholder="#1B1F5E" style="flex:1;"
+                oninput="syncColor(this.value)" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Logo URL (optional)</label>
+            <input class="form-input" id="new-org-logo" placeholder="https://..." />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Plan</label>
+            <select class="form-input" id="new-org-plan">
+              <option value="trial">Trial</option>
+              <option value="starter">Starter ($495/mo)</option>
+              <option value="growth">Growth ($990/mo)</option>
+              <option value="enterprise">Enterprise (custom)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Seats</label>
+            <input class="form-input" id="new-org-seats" type="number" value="5" min="1" />
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:4px;">
+          <button class="btn-sm primary" onclick="saveCustomer()">Save customer</button>
+          <button class="btn-sm" onclick="hideCustomerForm()">Cancel</button>
+        </div>
+        <div id="form-message" style="margin-top:12px;font-size:12px;min-height:16px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete confirmation overlay -->
+  <div class="delete-confirm" id="delete-confirm" style="display:none;">
+    <div class="delete-confirm-card">
+      <div class="delete-confirm-title">⚠️ Delete organization?</div>
+      <div class="delete-confirm-body">
+        This will permanently delete <strong id="delete-org-name"></strong> and all associated data including knowledge base, users, and usage history. This cannot be undone.
+      </div>
+      <div class="delete-confirm-actions">
+        <button class="btn-sm danger" onclick="confirmDelete()">Yes, delete permanently</button>
+        <button class="btn-sm" onclick="cancelDelete()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    let pendingDeleteId = null;
+
+    function syncColor(hex) {
+      if (/^#[0-9A-Fa-f]{6}$/.test(hex)) {
+        document.getElementById('new-org-color').value = hex;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('new-org-color')?.addEventListener('input', function() {
+        document.getElementById('new-org-color-hex').value = this.value;
+      });
+    });
+
+    async function loadCustomers() {
+      const { data: { session } } = await supabaseClient.auth.getSession();
+      if (!session) { window.location.href = 'index.html'; return; }
+
+      const { data: orgs, error } = await supabaseClient
+        .from('organizations')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) { console.error(error); return; }
+
+      // Update stats
+      const active = orgs?.filter(o => o.active !== false) || [];
+      const inactive = orgs?.filter(o => o.active === false) || [];
+      const seats = active.reduce((sum, o) => sum + (o.seats || 0), 0);
+      document.getElementById('stat-active').textContent = active.length;
+      document.getElementById('stat-inactive').textContent = inactive.length;
+      document.getElementById('stat-seats').textContent = seats;
+      document.getElementById('stat-mrr').textContent = '$' + (seats * 99).toLocaleString();
+
+      const tbody = document.getElementById('customers-table');
+      if (!orgs || orgs.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" class="empty-state">No customers yet — add your first one!</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = orgs.map(org => {
+        const isActive = org.active !== false;
+        return `
+          <tr class="${isActive ? '' : 'row-inactive'}">
+            <td>
+              <div style="display:flex;align-items:center;gap:8px;">
+                ${org.logo_url
+                  ? `<img src="${org.logo_url}" style="width:24px;height:24px;border-radius:5px;object-fit:cover;flex-shrink:0;" />`
+                  : `<div style="width:24px;height:24px;border-radius:5px;background:${org.brand_color||'#1B1F5E'};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;">${(org.name||'?')[0].toUpperCase()}</div>`
+                }
+                <div>
+                  <div style="font-weight:600;font-size:13px;">${org.name}</div>
+                  <div style="font-size:11px;color:var(--muted);">${org.slug || ''}</div>
+                </div>
+              </div>
+            </td>
+            <td><span class="badge-${org.plan === 'trial' ? 'trial' : 'active'}">${org.plan || 'trial'}</span></td>
+            <td style="font-size:13px;">${org.seats || 0}</td>
+            <td>
+              <span class="${isActive ? 'badge-active' : 'badge-inactive'}">
+                ${isActive ? 'Active' : 'Inactive'}
+              </span>
+            </td>
+            <td style="font-size:12px;color:var(--muted);">${new Date(org.created_at).toLocaleDateString()}</td>
+            <td>
+              <div class="action-btns">
+                <button class="btn-sm" onclick="editCustomer('${org.id}')">Edit</button>
+                ${isActive
+                  ? `<button class="btn-sm danger" onclick="deactivateOrg('${org.id}')">Deactivate</button>`
+                  : `<button class="btn-sm primary" onclick="reactivateOrg('${org.id}')">Reactivate</button>`
+                }
+                <button class="btn-sm danger" onclick="promptDelete('${org.id}', '${org.name.replace(/'/g, "\\'")}')">Delete</button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    async function deactivateOrg(id) {
+      const { error } = await supabaseClient
+        .from('organizations')
+        .update({ active: false })
+        .eq('id', id);
+      if (error) { alert('Error: ' + error.message); return; }
+      loadCustomers();
+    }
+
+    async function reactivateOrg(id) {
+      const { error } = await supabaseClient
+        .from('organizations')
+        .update({ active: true })
+        .eq('id', id);
+      if (error) { alert('Error: ' + error.message); return; }
+      loadCustomers();
+    }
+
+    function promptDelete(id, name) {
+      pendingDeleteId = id;
+      document.getElementById('delete-org-name').textContent = name;
+      document.getElementById('delete-confirm').style.display = 'flex';
+    }
+
+    function cancelDelete() {
+      pendingDeleteId = null;
+      document.getElementById('delete-confirm').style.display = 'none';
+    }
+
+    async function confirmDelete() {
+      if (!pendingDeleteId) return;
+      const id = pendingDeleteId;
+      cancelDelete();
+
+      // Delete all related data first
+      await Promise.all([
+        supabaseClient.from('capabilities').delete().eq('org_id', id),
+        supabaseClient.from('customer_stories').delete().eq('org_id', id),
+        supabaseClient.from('competitive_intel').delete().eq('org_id', id),
+        supabaseClient.from('icp_settings').delete().eq('org_id', id),
+        supabaseClient.from('product_lines').delete().eq('org_id', id),
+        supabaseClient.from('org_users').delete().eq('org_id', id),
+        supabaseClient.from('user_invites').delete().eq('org_id', id),
+        supabaseClient.from('usage_logs').delete().eq('org_id', id),
+      ]);
+
+      // Then delete the org
+      const { error } = await supabaseClient.from('organizations').delete().eq('id', id);
+      if (error) { alert('Error deleting: ' + error.message); return; }
+      loadCustomers();
+    }
+
+    function showAddCustomer() {
+      document.getElementById('edit-org-id').value = '';
+      document.getElementById('new-org-name').value = '';
+      document.getElementById('new-org-slug').value = '';
+      document.getElementById('new-org-brand').value = '';
+      document.getElementById('new-org-color').value = '#1B1F5E';
+      document.getElementById('new-org-color-hex').value = '#1B1F5E';
+      document.getElementById('new-org-logo').value = '';
+      document.getElementById('new-org-plan').value = 'trial';
+      document.getElementById('new-org-seats').value = '5';
+      document.getElementById('customer-form-title').textContent = 'Add new customer';
+      document.getElementById('form-message').textContent = '';
+      document.getElementById('customer-form-card').style.display = 'block';
+      document.getElementById('customer-form-card').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    async function editCustomer(id) {
+      const { data, error } = await supabaseClient.from('organizations').select('*').eq('id', id).single();
+      if (error || !data) return;
+      document.getElementById('edit-org-id').value = data.id;
+      document.getElementById('new-org-name').value = data.name || '';
+      document.getElementById('new-org-slug').value = data.slug || '';
+      document.getElementById('new-org-brand').value = data.brand_name || '';
+      document.getElementById('new-org-color').value = data.brand_color || '#1B1F5E';
+      document.getElementById('new-org-color-hex').value = data.brand_color || '#1B1F5E';
+      document.getElementById('new-org-logo').value = data.logo_url || '';
+      document.getElementById('new-org-plan').value = data.plan || 'trial';
+      document.getElementById('new-org-seats').value = data.seats || 5;
+      document.getElementById('customer-form-title').textContent = 'Edit customer';
+      document.getElementById('form-message').textContent = '';
+      document.getElementById('customer-form-card').style.display = 'block';
+      document.getElementById('customer-form-card').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function hideCustomerForm() {
+      document.getElementById('customer-form-card').style.display = 'none';
+      document.getElementById('form-message').textContent = '';
+    }
+
+    async function saveCustomer() {
+      const id = document.getElementById('edit-org-id').value;
+      const msg = document.getElementById('form-message');
+      const name = document.getElementById('new-org-name').value.trim();
+      const slug = document.getElementById('new-org-slug').value.trim();
+
+      if (!name || !slug) {
+        msg.textContent = 'Name and slug are required';
+        msg.style.color = '#C0320F';
+        return;
+      }
+
+      const payload = {
+        name,
+        slug,
+        brand_name: document.getElementById('new-org-brand').value.trim() || null,
+        brand_color: document.getElementById('new-org-color-hex').value.trim() || '#1B1F5E',
+        logo_url: document.getElementById('new-org-logo').value.trim() || null,
+        plan: document.getElementById('new-org-plan').value,
+        seats: parseInt(document.getElementById('new-org-seats').value) || 5,
+      };
+
+      const { error } = id
+        ? await supabaseClient.from('organizations').update(payload).eq('id', id)
+        : await supabaseClient.from('organizations').insert([{ ...payload, active: true }]);
+
+      if (error) {
+        msg.textContent = 'Error: ' + error.message;
+        msg.style.color = '#C0320F';
+      } else {
+        msg.textContent = id ? '✓ Customer updated!' : '✓ Customer added!';
+        msg.style.color = 'var(--teal)';
+        setTimeout(() => { hideCustomerForm(); loadCustomers(); }, 800);
+      }
+    }
+
+    loadCustomers();
+  </script>
+</body>
+</html>

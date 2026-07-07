@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Users — Recon</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="dash-wrap">
+    <div class="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-mark">R</div>
+        <div class="logo-text">Recon</div>
+      </div>
+      <a class="nav-item" href="dashboard.html">Overview</a>
+      <a class="nav-item" href="customers.html">Customers</a>
+      <div class="nav-item has-children">Settings</div>
+      <div class="nav-children open">
+        <a class="nav-child" href="settings.html">Knowledge Base</a>
+        <a class="nav-child active" href="users.html">Users</a>
+        <a class="nav-child" href="usage.html">Usage</a>
+      </div>
+      <div class="nav-spacer"></div>
+      <a class="nav-item" href="#" onclick="signOut()">Sign out</a>
+    </div>
+    <div class="main-content">
+      <div class="page-title">Users</div>
+
+      <!-- Stats row -->
+      <div class="stats-grid" style="margin-bottom:24px;">
+        <div class="stat-card">
+          <div class="stat-label">Total users</div>
+          <div class="stat-value" id="stat-total">—</div>
+          <div class="stat-sub">across all orgs</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Pending invites</div>
+          <div class="stat-value" id="stat-pending">—</div>
+          <div class="stat-sub">awaiting acceptance</div>
+        </div>
+      </div>
+
+      <!-- Active users -->
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+          <div class="card-title" style="margin:0">Active users</div>
+          <button class="btn-sm primary" onclick="showInviteForm()">+ Invite user</button>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Organization</th>
+              <th>Role</th>
+              <th>Joined</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="users-table">
+            <tr><td colspan="5" class="empty-state">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pending invites -->
+      <div class="card">
+        <div class="card-title">Pending invites</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>Organization</th>
+              <th>Role</th>
+              <th>Invited</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="invites-table">
+            <tr><td colspan="5" class="empty-state">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Invite form -->
+      <div class="card" id="invite-form" style="display:none;">
+        <div class="card-title">✉ Invite a user</div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">
+          The user will receive a magic link email. When they click it they'll be automatically
+          logged into Recon and connected to their organization.
+        </p>
+        <div class="form-group">
+          <label class="form-label">Email address</label>
+          <input class="form-input" id="invite-email" placeholder="rep@company.com" type="email" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Organization</label>
+          <select class="form-input" id="invite-org">
+            <option value="">Loading organizations...</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Role</label>
+          <select class="form-input" id="invite-role">
+            <option value="member">Member — sales rep, can use the extension</option>
+            <option value="admin">Admin — can manage settings and users</option>
+          </select>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <button class="btn-sm primary" id="invite-btn" onclick="sendInvite()">Send magic link ✉</button>
+          <button class="btn-sm" onclick="hideInviteForm()">Cancel</button>
+        </div>
+        <div id="invite-message" style="margin-top:12px;font-size:13px;min-height:20px;"></div>
+      </div>
+
+    </div>
+  </div>
+  <script src="app.js"></script>
+  <script>
+    const PROXY_URL = 'https://recon.jeffreymass.workers.dev';
+    const PROXY_SECRET = 'recon-2026-ydrk2XShah9l';
+
+    async function init() {
+      const { data: { session } } = await supabaseClient.auth.getSession();
+      if (!session) { window.location.href = 'index.html'; return; }
+      loadUsers();
+      loadInvites();
+      loadStats();
+    }
+
+    async function loadStats() {
+      const { data: users } = await supabaseClient.from('org_users').select('*');
+      const { data: invites } = await supabaseClient.from('user_invites')
+        .select('*').eq('accepted', false);
+      document.getElementById('stat-total').textContent = users?.length || 0;
+      document.getElementById('stat-pending').textContent = invites?.length || 0;
+    }
+
+    async function loadUsers() {
+      const { data: users } = await supabaseClient
+        .from('org_users')
+        .select('*, organizations(name, brand_color, logo_url)');
+
+      const tbody = document.getElementById('users-table');
+      if (!users || users.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="empty-state">No users yet — invite your first rep!</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = users.map(u => `
+        <tr>
+          <td>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:28px;height:28px;border-radius:50%;background:${u.organizations?.brand_color||'#1B1F5E'};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;">
+                ${u.user_id?.substring(0,1).toUpperCase()}
+              </div>
+              <div style="font-size:12px;color:var(--muted);">${u.user_id?.substring(0,16)}...</div>
+            </div>
+          </td>
+          <td>${u.organizations?.name || '—'}</td>
+          <td><span class="badge badge-${u.role === 'admin' ? 'admin' : 'member'}">${u.role}</span></td>
+          <td style="font-size:12px;color:var(--muted);">${new Date(u.created_at).toLocaleDateString()}</td>
+          <td>
+            <button class="btn-sm danger" onclick="removeUser('${u.id}')">Remove</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    async function loadInvites() {
+      const { data: invites } = await supabaseClient
+        .from('user_invites')
+        .select('*, organizations(name)')
+        .eq('accepted', false)
+        .order('created_at', { ascending: false });
+
+      const tbody = document.getElementById('invites-table');
+      if (!invites || invites.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="empty-state">No pending invites</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = invites.map(inv => `
+        <tr>
+          <td><strong>${inv.email}</strong></td>
+          <td>${inv.organizations?.name || '—'}</td>
+          <td><span class="badge badge-${inv.role === 'admin' ? 'admin' : 'member'}">${inv.role}</span></td>
+          <td style="font-size:12px;color:var(--muted);">${new Date(inv.created_at).toLocaleDateString()}</td>
+          <td>
+            <div style="display:flex;gap:6px;">
+              <button class="btn-sm" onclick="resendInvite('${inv.email}', '${inv.org_id}', '${inv.role}')">Resend</button>
+              <button class="btn-sm danger" onclick="cancelInvite('${inv.id}')">Cancel</button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    async function showInviteForm() {
+      // Load active orgs
+      const { data: orgs } = await supabaseClient
+        .from('organizations')
+        .select('*')
+        .eq('active', true)
+        .order('name');
+
+      const select = document.getElementById('invite-org');
+      if (!orgs || orgs.length === 0) {
+        select.innerHTML = '<option value="">No active organizations</option>';
+      } else {
+        select.innerHTML = '<option value="">Select organization...</option>' +
+          orgs.map(o => `<option value="${o.id}">${o.name}</option>`).join('');
+      }
+
+      document.getElementById('invite-email').value = '';
+      document.getElementById('invite-role').value = 'member';
+      document.getElementById('invite-message').textContent = '';
+      document.getElementById('invite-form').style.display = 'block';
+      document.getElementById('invite-form').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function hideInviteForm() {
+      document.getElementById('invite-form').style.display = 'none';
+    }
+
+    async function sendInvite() {
+      const email = document.getElementById('invite-email').value.trim();
+      const orgId = document.getElementById('invite-org').value;
+      const role = document.getElementById('invite-role').value;
+      const msg = document.getElementById('invite-message');
+      const btn = document.getElementById('invite-btn');
+
+      if (!email) { msg.textContent = 'Please enter an email address'; msg.style.color = '#C0320F'; return; }
+      if (!orgId) { msg.textContent = 'Please select an organization'; msg.style.color = '#C0320F'; return; }
+
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      msg.textContent = '';
+
+      try {
+        const response = await fetch(PROXY_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Proxy-Secret': PROXY_SECRET
+          },
+          body: JSON.stringify({ route: 'invite', email, orgId, role })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to send invite');
+        }
+
+        msg.textContent = '✓ Magic link sent to ' + email + ' — they can click it to access Recon immediately';
+        msg.style.color = '#007A62';
+        btn.textContent = 'Send magic link ✉';
+        btn.disabled = false;
+
+        // Refresh lists
+        setTimeout(() => {
+          loadUsers();
+          loadInvites();
+          loadStats();
+        }, 1000);
+
+      } catch (e) {
+        msg.textContent = 'Error: ' + e.message;
+        msg.style.color = '#C0320F';
+        btn.textContent = 'Send magic link ✉';
+        btn.disabled = false;
+      }
+    }
+
+    async function resendInvite(email, orgId, role) {
+      const msg = document.createElement('span');
+      try {
+        const response = await fetch(PROXY_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'X-Proxy-Secret': PROXY_SECRET },
+          body: JSON.stringify({ route: 'invite', email, orgId, role })
+        });
+        if (!response.ok) throw new Error('Failed');
+        alert('Magic link resent to ' + email);
+      } catch (e) {
+        alert('Error resending: ' + e.message);
+      }
+    }
+
+    async function cancelInvite(id) {
+      if (!confirm('Cancel this invite?')) return;
+      await supabaseClient.from('user_invites').delete().eq('id', id);
+      loadInvites();
+      loadStats();
+    }
+
+    async function removeUser(id) {
+      if (!confirm('Remove this user from their organization? They will lose access to Recon.')) return;
+      await supabaseClient.from('org_users').delete().eq('id', id);
+      loadUsers();
+      loadStats();
+    }
+
+    init();
+  </script>
+</body>
+</html>

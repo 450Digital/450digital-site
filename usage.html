@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usage — Recon</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="dash-wrap">
+    <div class="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-mark">R</div>
+        <div class="logo-text">Recon</div>
+      </div>
+      <a class="nav-item" href="dashboard.html">Overview</a>
+      <a class="nav-item" href="customers.html">Customers</a>
+      <div class="nav-item has-children">Settings</div>
+      <div class="nav-children open">
+        <a class="nav-child" href="settings.html">Knowledge Base</a>
+        <a class="nav-child" href="users.html">Users</a>
+        <a class="nav-child active" href="usage.html">Usage</a>
+      </div>
+      <div class="nav-spacer"></div>
+      <a class="nav-item" href="#" onclick="signOut()">Sign out</a>
+    </div>
+    <div class="main-content">
+      <div class="page-title">Usage</div>
+
+      <div class="stats-grid" style="margin-bottom:24px;">
+        <div class="stat-card">
+          <div class="stat-label">Total lookups</div>
+          <div class="stat-value" id="stat-total">—</div>
+          <div class="stat-sub">all time</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Lookups today</div>
+          <div class="stat-value" id="stat-today">—</div>
+          <div class="stat-sub">last 24 hours</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">This month</div>
+          <div class="stat-value" id="stat-month">—</div>
+          <div class="stat-sub">account researches</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Top account</div>
+          <div class="stat-value" style="font-size:16px;" id="stat-top">—</div>
+          <div class="stat-sub">most researched</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+          <div class="card-title" style="margin:0">All lookups</div>
+          <select class="form-input" id="org-filter" style="width:200px;" onchange="loadUsage()">
+            <option value="">All organizations</option>
+          </select>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Company researched</th>
+              <th>User</th>
+              <th>Organization</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody id="usage-table">
+            <tr><td colspan="4" class="empty-state">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+  <script>
+    async function init() {
+      const { data: { session } } = await supabaseClient.auth.getSession();
+      if (!session) { window.location.href = 'index.html'; return; }
+      loadOrgs();
+      loadStats();
+      loadUsage();
+    }
+
+    async function loadOrgs() {
+      const { data: orgs } = await supabaseClient.from('organizations').select('*');
+      const select = document.getElementById('org-filter');
+      orgs?.forEach(o => {
+        const opt = document.createElement('option');
+        opt.value = o.id;
+        opt.textContent = o.name;
+        select.appendChild(opt);
+      });
+    }
+
+    async function loadStats() {
+      const { data: all } = await supabaseClient.from('usage_logs').select('*');
+      const today = new Date().toISOString().split('T')[0];
+      const month = new Date().toISOString().substring(0, 7);
+      const todayCount = all?.filter(l => l.created_at?.startsWith(today)).length || 0;
+      const monthCount = all?.filter(l => l.created_at?.startsWith(month)).length || 0;
+      document.getElementById('stat-total').textContent = all?.length || 0;
+      document.getElementById('stat-today').textContent = todayCount;
+      document.getElementById('stat-month').textContent = monthCount;
+      const counts = {};
+      all?.forEach(l => { if (l.company_name) counts[l.company_name] = (counts[l.company_name] || 0) + 1; });
+      const top = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
+      document.getElementById('stat-top').textContent = top ? top[0] : '—';
+    }
+
+    async function loadUsage() {
+      const orgFilter = document.getElementById('org-filter').value;
+      let query = supabaseClient.from('usage_logs')
+        .select('*, organizations(name)')
+        .order('created_at', { ascending: false })
+        .limit(50);
+      if (orgFilter) query = query.eq('org_id', orgFilter);
+      const { data: logs } = await query;
+      const tbody = document.getElementById('usage-table');
+      if (!logs || logs.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" class="empty-state">No lookups yet</td></tr>';
+        return;
+      }
+      tbody.innerHTML = logs.map(log => `
+        <tr>
+          <td><strong>${log.company_name || '—'}</strong></td>
+          <td style="font-size:11px;color:var(--muted)">${log.user_id?.substring(0, 12)}...</td>
+          <td>${log.organizations?.name || '—'}</td>
+          <td style="font-size:11px;color:var(--muted)">${new Date(log.created_at).toLocaleString()}</td>
+        </tr>
+      `).join('');
+    }
+
+    init();
+  </script>
+</body>
+</html>
