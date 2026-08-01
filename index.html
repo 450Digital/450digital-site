@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>450Digital — AI Agents & Demand Generation for B2B Revenue Teams</title>
-  <meta name="description" content="450Digital builds AI agents that recover lost revenue — dormant leads, abandoned carts, missed calls — plus Recon, the AI account intelligence tool, all on proven demand generation foundations." />
+  <title>Recon by 450Digital — AI Account Intelligence for B2B Sales Teams</title>
+  <meta name="description" content="Recon researches any account in seconds — evidence-led initiatives, product fit, briefs, account plans, and outreach. Built by 450Digital." />
   <link rel="canonical" href="https://www.450digital.com/" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#0D1235" />
@@ -15,14 +15,11 @@
   <meta property="og:title" content="450Digital — AI Agents & Demand Generation for B2B Revenue Teams" />
   <meta property="og:description" content="AI agents that recover what others leave behind: dormant leads, abandoned carts, after-hours calls. Plus Recon — AI account intelligence in under 30 seconds." />
   <meta property="og:url" content="https://www.450digital.com/" />
-  <meta property="og:image" content="https://www.450digital.com/scarlet-witch.jpg" />
-  <meta property="og:image:alt" content="The Scarlet Witch — the hand-restored 1971 Honda CB450 café racer that gave 450Digital its name" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="450Digital — AI Agents & Demand Generation for B2B Revenue Teams" />
   <meta name="twitter:description" content="AI agents that recover what others leave behind: dormant leads, abandoned carts, after-hours calls. Plus Recon — AI account intelligence in under 30 seconds." />
-  <meta name="twitter:image" content="https://www.450digital.com/scarlet-witch.jpg" />
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -35,8 +32,8 @@
         "name": "450 Digital, LLC",
         "alternateName": "450Digital",
         "url": "https://www.450digital.com/",
-        "email": "jeff@450digital.com",
-        "telephone": "+1-512-810-0049",
+        "email": "hello@450digital.com",
+        "telephone": "+1-512-931-4470",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "5900 Balcones Drive, Suite 26681",
@@ -307,6 +304,13 @@
     .playbook p { font-size: 0.95rem; margin-bottom: 28px; color: rgba(255,255,255,0.72); }
     .playbook .eyebrow { color: #6FA5EE; }
 
+    /* Services band */
+    .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 48px; }
+    .svc-card { background: var(--fog); border-radius: var(--r-tile); padding: 30px 28px; }
+    .svc-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
+    .svc-card p { font-size: 0.93rem; color: var(--smoke); line-height: 1.6; }
+    @media (max-width: 920px) { .svc-grid { grid-template-columns: 1fr; } }
+
     /* Pricing */
     .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 64px; align-items: stretch; }
     .price-card {
@@ -460,15 +464,12 @@
     <a class="logo" href="#top"><img class="logo-mark" src="/logo-icon.svg" alt="" />450<span>Digital</span></a>
     <button class="nav-toggle" aria-label="Open menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
     <nav class="nav-links">
-      <a href="#agents">AI Agents</a>
-      <a href="#recon">Recon</a>
-      <a href="#foundations">Foundations</a>
-      <a href="#training">Training</a>
+      <a href="#recon">Product</a>
       <a href="#pricing">Pricing</a>
+      <a href="#services">Services</a>
       <a href="#about">About</a>
-      <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
-      <a class="nav-cta" href="https://recon.450digital.com">Try Recon Free</a>
+      <a class="nav-cta" href="mailto:hello@450digital.com?subject=Recon%20Free%20Trial">Start a Free Trial</a>
     </nav>
   </div>
 </header>
@@ -478,21 +479,14 @@
   <!-- Hero -->
   <div class="hero">
     <div class="wrap">
-      <span class="eyebrow">AI Agents · Account Intelligence · Demand Generation</span>
-      <h1>AI agents that recover what others leave behind.</h1>
-      <p class="lead">Forgotten leads, abandoned carts, after-hours calls, slow follow-up — every business loses revenue it already earned. 450Digital's AI agents plug those gaps 24/7, backed by 18+ years of demand generation practice.</p>
+      <span class="eyebrow">Recon · by 450Digital</span>
+      <h1>Stand apart on the first call.</h1>
+      <p class="lead">While competitors open with a generic pitch, your reps open with the prospect's own initiatives — and exactly how your products fit. Recon is AI account intelligence for B2B sales teams: research, outreach, and account planning in minutes, not mornings. Built into Chrome, at home on LinkedIn and Salesforce.</p>
       <div class="hero-actions">
-        <a class="btn btn-ink" href="#agents">See the Agent Suite</a>
-        <a class="btn btn-quiet" href="#contact">Talk to us</a>
+        <a class="btn btn-ink" href="mailto:hello@450digital.com?subject=Recon%20Free%20Trial">Start a Free Trial</a>
+        <a class="btn btn-quiet" href="#pricing">See pricing</a>
       </div>
-      <div class="exp">
-        <span class="k">Experience from</span>
-        <span>Oracle Marketing Cloud</span>
-        <span>DocuSign</span>
-        <span>Sprinklr</span>
-        <span>Alteryx</span>
-        <span>Genesys</span>
-      </div>
+      
     </div>
 
     <!-- Signature: the recovery ledger -->
@@ -515,153 +509,45 @@
   </div>
 
   <!-- Agent Suite -->
-  <section id="agents">
-    <div class="wrap">
-      <span class="eyebrow">The 450Digital Agent Suite</span>
-      <h2 class="measure">Stop letting opportunities slip away.</h2>
-      <p class="lead" style="margin-top:22px;">Leads go dormant, carts are abandoned, follow-ups come too late, and satisfied customers never leave reviews. Each agent plugs one of those leaks — and they all run around the clock.</p>
-      <div class="grid-3">
-        <div class="tile">
-          <span class="icon">💬</span>
-          <h3>Database Reactivation</h3>
-          <p>Your team worked hard to get those leads. Wake them up with engaging two-way SMS conversations that reignite interest and grow pipeline from contacts you've already paid for.</p>
-        </div>
-        <div class="tile">
-          <span class="icon">⚡</span>
-          <h3>Speed to Lead</h3>
-          <p>Respond to new inquiries in seconds — not hours. Instant AI follow-up qualifies and converts prospects before competitors even see the lead, with a safety net when your team is stretched.</p>
-        </div>
-        <div class="tile">
-          <span class="icon">🕐</span>
-          <h3>24/7 Attendant</h3>
-          <p>Stop after-hours leads going unanswered. The attendant engages every inquiry the moment it arrives, filters unqualified prospects, and hands your team warm, ready conversations each morning.</p>
-        </div>
-        <div class="tile">
-          <span class="icon">🛒</span>
-          <h3>Abandoned Cart Recovery</h3>
-          <p>Secure sales that would otherwise be lost to the void. Smart follow-up nudges answer questions, suggest alternatives, and bring shoppers back to close the purchase.</p>
-        </div>
-        <div class="tile">
-          <span class="icon">🎙️</span>
-          <h3>AI Voice Agent</h3>
-          <p>AI handles inbound calls end to end — redirecting leads, taking information, answering questions, and booking or rearranging appointments, with seamless handoff to humans when it counts.</p>
-        </div>
-        <div class="tile">
-          <span class="icon">⭐</span>
-          <h3>Review &amp; Reputation Shield</h3>
-          <p>Automatically capture reviews from happy customers, triage unhappy ones before they post, and reply to every review without spending man-hours — building credibility on autopilot.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule" />
-
-  <!-- Pull-quote stat -->
-  <div class="pull">
-    <div class="wrap">
-      <blockquote>AI agents converted <em>22% of dormant SaaS trial users</em> in 60 days.</blockquote>
-      <cite>Real client result · database reactivation campaign</cite>
-    </div>
-  </div>
-
-  <hr class="rule" />
-
-  <!-- Recon -->
-  <section id="recon" class="recon">
-    <div class="wrap">
-      <span class="eyebrow">Flagship Product · Recon</span>
-      <h2 class="measure">Your reps shouldn't spend an hour researching before every call.</h2>
-      <div class="recon-grid">
-        <div>
-          <p class="lead" style="margin-top:24px;">Recon is an AI-powered account research tool built into Salesforce and available as a Chrome extension. In under 30 seconds it surfaces everything a rep needs for a relevant, personalized conversation — so more time goes to selling, not searching.</p>
-          <ul>
-            <li>SEC filings + AI analysis of strategic priorities and risk factors</li>
-            <li>Hiring signal detection — know what they're building before you call</li>
-            <li>Competitive displacement angles tailored to your product</li>
-            <li>1-click personalized outreach emails and multi-step cadences</li>
-            <li>Works natively in Salesforce and as a standalone Chrome extension</li>
-          </ul>
-          <div class="recon-actions">
-            <a class="btn btn-ink" href="https://recon.450digital.com">Try Recon Free</a>
-            <a class="btn btn-quiet" href="#contact">Get a demo</a>
-          </div>
-        </div>
-        <div>
-          <div class="steps">
-            <div class="step"><div class="step-num">01</div><div><h3>Open any account</h3><p>Navigate to a Salesforce record or any company page in Chrome. Recon activates automatically.</p></div></div>
-            <div class="step"><div class="step-num">02</div><div><h3>AI builds the brief</h3><p>Recon pulls SEC filings, news, hiring data, and competitive signals — then surfaces the insights that matter for your product.</p></div></div>
-            <div class="step"><div class="step-num">03</div><div><h3>Personalized outreach, ready to send</h3><p>A tailored opening email and cadence built around what's actually happening at that account — not a generic template.</p></div></div>
-            <div class="step"><div class="step-num">04</div><div><h3>Ship it in under 30 seconds</h3><p>From zero to fully researched, personalized, and ready to send — before you finish your coffee.</p></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule" />
-
-  <!-- Foundations -->
-  <section id="foundations">
-    <div class="wrap">
-      <span class="eyebrow">Demand Generation Services</span>
-      <h2 class="measure">AI fills the leaks. Foundations build the funnel.</h2>
-      <p class="lead" style="margin-top:22px;">AI agents are powerful at capturing what's slipping away — but they can only scale if your funnel is built on solid ground. 450Digital's foundational services provide the strategy, messaging, and targeting that ensure every AI-powered interaction drives measurable growth.</p>
-      <div class="chips">
-        <div class="chip"><span class="tag">Assess</span><h3>Campaign &amp; Channel Performance Assessment</h3><p>Find where budget leaks and which channels actually produce pipeline — before spending another dollar.</p></div>
-        <div class="chip"><span class="tag">Nurture</span><h3>Dynamic Nurtures &amp; Content-Routed Journeys</h3><p>Nurture streams that adapt to behavior and route prospects to the content most likely to convert them.</p></div>
-        <div class="chip"><span class="tag">Message</span><h3>Campaign Messaging Lab</h3><p>Sharpen positioning and messaging until it resonates — tested against real audience response, not opinion.</p></div>
-        <div class="chip"><span class="tag">Convert</span><h3>Tactical SDR Pack</h3><p>Ready-to-run sequences, call scripts, and objection handling that turn qualified interest into meetings.</p></div>
-        <div class="chip"><span class="tag">Add-on</span><h3>ICP &amp; Segmentation Sanity Check</h3><p>Validate that you're targeting accounts that can actually buy — and segmenting them in a way sales can use.</p></div>
-        <div class="chip"><span class="tag">Add-on</span><h3>Attribution &amp; Source-of-Truth Micro-Audit</h3><p>Reconcile the numbers so marketing, sales, and finance finally agree on what's working.</p></div>
-      </div>
-      <div class="svc-2">
-        <div class="tile">
-          <h3>Enhanced Campaign Engagement</h3>
-          <p>Custom engagements for marketing demand generation and lead management: tailored strategies to spark interest, nurture leads, and drive conversions through personalized, effective outreach.</p>
-        </div>
-        <div class="tile">
-          <h3>Lead Scoring &amp; Analytics</h3>
-          <p>Identify and prioritize high-potential prospects by ranking leads on engagement, fit, and likelihood to convert. Behavioral and firmographic data plus predictive analytics focus sales effort where it matters — shortening cycles and lifting ROI.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule" />
-
-  <!-- Training -->
-  <section id="training" class="training">
-    <div class="wrap training-grid">
-      <div>
-        <span class="eyebrow">Education</span>
-        <h2>Master demand generation — then supercharge it with AI.</h2>
-        <p class="lead" style="margin-top:22px;">The Demand Generation Foundations course teaches the core strategies and practices that fuel sustainable engagement and pipeline growth — the new standard for modern B2B marketers.</p>
-        <ul>
-          <li>Build a full-funnel demand generation strategy</li>
-          <li>Align sales and marketing for faster growth</li>
-          <li>Optimize campaigns for higher engagement, conversion, and attribution</li>
-          <li>Use analytics to prove ROI and guide investment</li>
-          <li>Individual online and group instructor-led formats available</li>
-        </ul>
-        <div class="hero-actions">
-          <a class="btn btn-ink" href="mailto:jeff@450digital.com?subject=Foundations%20Training%20Enrollment">Enroll in Foundations Training</a>
-          <a class="btn btn-quiet" href="mailto:jeff@450digital.com?subject=Team%20Training%20Inquiry">Team training</a>
-        </div>
-      </div>
-      <div class="playbook">
-        <img class="playbook-cover" src="/playbook-cover.png" alt="The Engagement Playbook Series — From Engagement to Revenue: Strengthening the Foundations for Pipeline Growth" loading="lazy" />
-        <span class="eyebrow" style="margin-bottom:14px;">Free Resource</span>
-        <h3>The Engagement Playbook Series</h3>
-        <p>A practical playbook for re-engaging your database and building conversion-focused journeys — the same frameworks used in our client engagements.</p>
-        <a class="btn btn-ink" href="mailto:jeff@450digital.com?subject=Engagement%20Playbook%20Request">Request the Playbook</a>
-      </div>
-    </div>
-  </section>
+  
 
   <hr class="rule" />
 
   <!-- Pricing -->
+  <!-- Recon: the product -->
+  <section id="recon" class="recon">
+    <div class="wrap">
+      <span class="eyebrow">The Product</span>
+      <h2 class="measure">An hour of account research. Thirty seconds of Recon.</h2>
+      <div class="recon-grid">
+        <div>
+          <p class="lead" style="margin-top:24px;">Recon reads what the market is saying about your target — filings, earnings calls, press, executive commentary, hiring signals — and translates it into an evidence-led plan of attack for <em>your</em> products. Every claim labeled by source. Nothing invented.</p>
+          <ul>
+            <li><b>Live-researched initiatives matrix</b> — up to three credible priorities per account, each tagged explicit or inferred, with why it matters and talking points tied to your value drivers</li>
+            <li><b>Auto product-fit</b> — Recon maps initiatives across your entire catalog and names the products that genuinely apply</li>
+            <li><b>One-click briefs &amp; strategic account plans</b> — a shareable one-pager or a nine-section plan with win themes, whitespace, and a relationship map</li>
+            <li><b>Outreach that sounds like your best rep</b> — Challenger-style emails, call scripts, and multi-touch cadences, problem-first and under 100 words</li>
+            <li><b>Team admin &amp; analytics</b> — bulk-invite your team, set plans and limits, and see research activity by rep and sales team</li>
+          </ul>
+          <div class="recon-actions">
+            <a class="btn btn-ink" href="mailto:hello@450digital.com?subject=Recon%20Free%20Trial">Start a Free Trial</a>
+            <a class="btn btn-quiet" href="#pricing">See pricing</a>
+          </div>
+        </div>
+        <div>
+          <div class="steps">
+            <div class="step"><div class="step-num">01</div><div><h3>Point it at a company</h3><p>Type a name in the extension — or open the account on LinkedIn or Salesforce. Choose a product line, or let Auto mode decide.</p></div></div>
+            <div class="step"><div class="step-num">02</div><div><h3>Recon researches live</h3><p>Filings, earnings calls, recent news, executive commentary, hiring trends — prioritized to the last 6–12 months and mapped against your catalog.</p></div></div>
+            <div class="step"><div class="step-num">03</div><div><h3>Get the evidence-led matrix</h3><p>Initiatives, fit ratings, why-it-matters, talking points, product fit — every row sourced, nothing speculative.</p></div></div>
+            <div class="step"><div class="step-num">04</div><div><h3>Act on it immediately</h3><p>Copy the brief, export the account plan, generate the day-one LinkedIn-email-call cadence. Research to outreach in one sitting.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
   <section id="pricing">
     <div class="wrap">
       <span class="eyebrow">Recon Pricing</span>
@@ -684,7 +570,7 @@
             <li class="dim">Multi-touch cadences &amp; LinkedIn outreach</li>
             <li class="dim">Auto product-fit across your catalog</li>
           </ul>
-          <a class="btn btn-ink" href="mailto:jeff@450digital.com?subject=Recon%20Starter" style="justify-content:center;">Start with Starter</a>
+          <a class="btn btn-ink" href="mailto:hello@450digital.com?subject=Recon%20Starter" style="justify-content:center;">Start with Starter</a>
         </div>
 
         <div class="price-card featured">
@@ -701,7 +587,7 @@
             <li>Shared team research library</li>
             <li>Priority support</li>
           </ul>
-          <a class="btn btn-ink" href="mailto:jeff@450digital.com?subject=Recon%20Growth" style="justify-content:center;background:var(--azure);">Talk to us about Growth</a>
+          <a class="btn btn-ink" href="mailto:hello@450digital.com?subject=Recon%20Growth" style="justify-content:center;background:var(--azure);">Talk to us about Growth</a>
         </div>
 
         <div class="price-card">
@@ -718,11 +604,36 @@
             <li>API access</li>
             <li>Dedicated onboarding &amp; success</li>
           </ul>
-          <a class="btn btn-ink" href="mailto:jeff@450digital.com?subject=Recon%20Enterprise" style="justify-content:center;">Design your plan</a>
+          <a class="btn btn-ink" href="mailto:hello@450digital.com?subject=Recon%20Enterprise" style="justify-content:center;">Design your plan</a>
         </div>
 
       </div>
       <p class="price-note">Contact data credits — verified contacts and personas pulled straight into your workflow — are available as add-on packs on any plan. Research allowances are per seat per month; unused capacity doesn't roll over. Annual billing available on all plans.</p>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section id="services">
+    <div class="wrap">
+      <span class="eyebrow">Beyond Recon · 450Digital Services</span>
+      <h2 class="measure">The product is the tip of the spear. The practice is behind it.</h2>
+      <p class="lead" style="margin-top:22px;">Recon comes out of a demand generation practice built inside some of the most competitive SaaS companies in the world. That practice is still open for business.</p>
+      <div class="svc-grid">
+        <div class="svc-card">
+          <h3>AI Agent Suite</h3>
+          <p>Voice, chat, and workflow agents that answer after-hours calls, revive dormant leads, recover abandoned carts, and respond in seconds — recovering revenue you already earned.</p>
+        </div>
+        <div class="svc-card">
+          <h3>Demand Gen Foundations</h3>
+          <p>Positioning, ICP, funnel architecture, and the marketing-to-sales handoff — the groundwork that makes every campaign and every agent perform.</p>
+        </div>
+        <div class="svc-card">
+          <h3>AI Enablement Training</h3>
+          <p>Hands-on training that turns your revenue team into confident AI operators — practical workflows, not theory.</p>
+        </div>
+      </div>
+      <div style="margin-top:32px;"><a class="btn btn-quiet" href="#contact">Talk to us about services</a></div>
     </div>
   </section>
 
@@ -738,9 +649,10 @@
           <p style="margin-top:24px;">450Digital was built on a single belief: <strong>pipeline growth is an engineering problem, not a creativity contest.</strong> The work spans demand generation strategy, AI-powered outreach tooling, and sales automation — all designed to produce numbers you can put in a board deck.</p>
           <p>The company combines <strong>decades of hands-on GTM and demand generation experience</strong> at some of the most competitive SaaS companies in the world with AI agents that work 24/7. The real culprits in B2B marketing are human ones — proving marketing's worth, arguing over what makes a lead "good," losing prospects in the shuffle — and 450Digital builds systems that solve them: leads land in the right hands at the right moment, follow-up feels seamless, and nurturing keeps the conversation alive.</p>
           <p>The approach isn't about chasing trends. It's about <strong>building systems that endure and convert</strong> — real-time analytics, seamless lead delivery, and tailored nurturing on a foundation that doesn't need to be rebuilt every 18 months.</p>
+          <p class="sub" style="color:var(--smoke);font-size:0.9rem;">The name? A nod to the Honda CB450 — a small machine with a long history of outrunning bigger ones.</p>
         </div>
         <div class="about-stats">
-          <div class="about-stat"><div class="num">18+</div><div class="lbl">years building predictable pipeline at SaaS leaders</div></div>
+          <div class="about-stat"><div class="num">&lt;30s</div><div class="lbl">from company name to an evidence-led account brief</div></div>
           <div class="about-stat"><div class="num">22%</div><div class="lbl">of dormant SaaS trial users converted in 60 days using AI agents</div></div>
           <div class="about-stat"><div class="num">3×</div><div class="lbl">AI product lines covering the full revenue funnel</div></div>
         </div>
@@ -748,29 +660,7 @@
     </div>
   </section>
 
-  <!-- The 450 -->
-  <section id="the-450" class="origin">
-    <div class="wrap">
-      <span class="eyebrow">Why "450"</span>
-      <h2>Named after a machine that demanded everything.</h2>
-      <div class="origin-grid">
-        <figure>
-          <img src="/scarlet-witch.jpg" alt="The Scarlet Witch — a hand-restored 1971 Honda CB450 café racer with a candy-red tank, photographed in a workshop" loading="lazy" />
-          <figcaption>The Scarlet Witch · 1971 Honda CB450 · BikeBound Top 10 Café Racers of 2020</figcaption>
-        </figure>
-        <div class="origin-copy">
-          <p>The "450" in 450Digital is a <strong>1971 Honda CB450</strong> — a complete frame-up restoration that took two and a half years of wrestling with every nut, bolt, and stubborn detail until each one was exactly right.</p>
-          <p>The result was the <strong>"Scarlet Witch,"</strong> a sleek café racer that earned a spot on BikeBound's Top 10 Café Racers of 2020 and a showcase at The Handbuilt Show in Austin, Texas.</p>
-          <p>That build is the company's standard, not its mascot: <strong>patience, grit, and the conviction that details done right compound into something that wins.</strong> The same discipline runs through every 450Digital engagement — decades of demand generation, marketing operations, branding, and Six Sigma practice applied until the machine runs the way it should.</p>
-          <div class="origin-specs">
-            <span>2.5 yr frame-up build</span>
-            <span>BikeBound Top 10 · 2020</span>
-            <span>The Handbuilt Show · Austin</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- Testimonials -->
   <section>
@@ -832,14 +722,14 @@
         <h2>Ready to recover what you're leaving behind?</h2>
         <p class="lead" style="margin-top:22px;">Tell us where revenue is leaking — dormant lists, slow follow-up, missed calls — and we'll show you what an agent can recover. No setup required to try Recon.</p>
         <div class="hero-actions" style="margin-top:36px;">
-          <a class="btn btn-ink" href="mailto:jeff@450digital.com?subject=450Digital%20Inquiry">Get started</a>
-          <a class="btn btn-quiet" href="https://recon.450digital.com">Try Recon free</a>
+          <a class="btn btn-ink" href="mailto:hello@450digital.com?subject=450Digital%20Inquiry">Get started</a>
+          <a class="btn btn-quiet" href="mailto:hello@450digital.com?subject=Recon%20Free%20Trial">Start a free trial</a>
         </div>
       </div>
       <div>
         <ul class="contact-list">
-          <li><span class="k">Email</span><a href="mailto:jeff@450digital.com">jeff@450digital.com</a></li>
-          <li><span class="k">Phone</span><a href="tel:+15128100049">512-810-0049</a></li>
+          <li><span class="k">Email</span><a href="mailto:hello@450digital.com">hello@450digital.com</a></li>
+          <li><span class="k">Phone</span><a href="tel:+15129314470">512-931-4470</a></li>
           <li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/company/450digital" rel="noopener">450Digital on LinkedIn</a></li>
           <li><span class="k">Office</span>450 Digital, LLC · 5900 Balcones Drive, Suite 26681 · Austin, TX 78731</li>
         </ul>
@@ -870,10 +760,12 @@
       <div>
         <h4>Company</h4>
         <ul>
-          <li><a href="mailto:jeff@450digital.com">jeff@450digital.com</a></li>
-          <li><a href="tel:+15128100049">512-810-0049</a></li>
+          <li><a href="mailto:hello@450digital.com">hello@450digital.com</a></li>
+          <li><a href="tel:+15129314470">512-931-4470</a></li>
           <li><a href="https://www.linkedin.com/company/450digital" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://recon.450digital.com">Recon sign in</a></li>
           <li><a href="/privacy.html">Privacy Policy</a></li>
+          <li><a href="/terms.html">Terms of Service</a></li>
         </ul>
         <p style="margin-top:16px;">450 Digital, LLC<br/>5900 Balcones Drive, Suite 26681<br/>Austin, TX 78731</p>
       </div>
